@@ -1,0 +1,35 @@
+stage: 03-module-design
+name: Module Design（模块接口设计）
+
+deliverables:
+  - id: module-design-doc
+    type: file
+    path: module-design.md
+    required: true
+    min_size_bytes: 500
+
+  - id: interface-schemas
+    type: dir
+    path: schemas
+    required: true
+    pattern: "*.py"
+    min_files: 2
+
+  - id: slo-definitions
+    type: file
+    path: schemas/slo.yaml
+    required: true
+
+  - id: api-spec-narrative
+    type: file
+    path: api-spec.md
+    required: true
+    must_contain:
+      - "SLO 契约"
+      - "可观测性契约"
+      - "降级契约"
+
+  - id: schemas-importable
+    type: command
+    cmd: "python3 -c 'import sys; sys.path.insert(0, \"schemas\"); import common'"
+    cwd_stage: true

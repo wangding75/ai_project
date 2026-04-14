@@ -1,0 +1,15 @@
+stage: 07-operations
+name: Operations（监控运维）
+
+deliverables:
+  - id: runbook
+    type: file
+    path: runbook.md
+    required: true
+    min_size_bytes: 300
+
+  - id: monitoring-doc
+    type: file
+    path: monitoring.md
+    required: true
+    min_size_bytes: 300

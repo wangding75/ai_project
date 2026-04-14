@@ -1,0 +1,11 @@
+stage: 01-requirements
+name: Requirements（需求分析）
+
+deliverables:
+  - id: requirements-doc
+    type: file
+    path: requirements.md
+    required: true
+    min_size_bytes: 1000
+    must_contain:
+      - "需求"

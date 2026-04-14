@@ -1,0 +1,46 @@
+# Hermes 非功能性约束
+# 本文件是机器可读的 SLO/可观测性/降级要求定义，
+# 阶段 04 TDD 测试从此生成非功能性断言。
+
+modules:
+  data_layer:
+    slo:
+      p50_latency_ms: 50
+      p99_latency_ms: 300
+      availability: 0.995
+      error_rate: 0.001
+
+    logging_required_fields:
+      - trace_id
+      - symbol
+      - start_date
+      - end_date
+      - duration_ms
+      - upstream_source
+
+    metrics_required:
+      - name: hermes_data_fetch_requests_total
+        type: counter
+        labels: [symbol, source, status]
+      - name: hermes_data_fetch_duration_seconds
+        type: histogram
+        labels: [symbol, source]
+      - name: hermes_data_fetch_cache_hit_total
+        type: counter
+        labels: [symbol]
+
+    fallback:
+      required: true
+      scenarios:
+        - trigger: tushare_timeout
+          action: switch_to_akshare
+        - trigger: all_upstream_failed
+          action: return_cache_with_stale_flag
+        - trigger: no_cache_available
+          action: return_upstream_timeout_error
+
+    security:
+      authentication: internal_only
+      rate_limit:
+        requests_per_second: 10
+        scope: per_instance

@@ -1,0 +1,9 @@
+stage: 02-system-design
+name: System Design（系统设计）
+
+deliverables:
+  - id: architecture-doc
+    type: file
+    path: architecture.md
+    required: true
+    min_size_bytes: 2000

@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# pre-commit hook — 两个职责：
+# 1. 阻止提交对锁定测试目录的修改
+# 2. 自动跑 update_progress.py 让 PROGRESS.md 与事实一致
+#
+# 安装：make install-hooks  或  git config core.hooksPath .githooks
+
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+LOCK_DIR="$REPO_ROOT/.git/locks"
+
+# ---- Check 1: Locked test files ----
+if [ -d "$LOCK_DIR" ]; then
+  STAGED=$(git diff --cached --name-only)
+  BLOCKED=""
+  for lock_file in "$LOCK_DIR"/*.lock; do
+    [ -f "$lock_file" ] || continue
+    TESTS_DIR=$(grep "^tests_dir=" "$lock_file" | cut -d= -f2-)
+    [ -z "$TESTS_DIR" ] && continue
+    for staged_file in $STAGED; do
+      if [[ "$staged_file" == "$TESTS_DIR"* ]]; then
+        BLOCKED="$BLOCKED $staged_file"
+      fi
+    done
+  done
+  if [ -n "$BLOCKED" ]; then
+    echo "❌ Commit blocked: modifications to locked test directories"
+    echo ""
+    echo "Locked test files cannot be modified directly. Blocked files:"
+    for f in $BLOCKED; do
+      echo "   - $f"
+    done
+    echo ""
+    echo "If you MUST modify tests (e.g., interface changed):"
+    echo "   1. Run: make unlock-tests PROJECT=<project> REASON=\"your reason\""
+    echo "   2. Make the changes"
+    echo "   3. Run: make lock-tests PROJECT=<project>"
+    echo "   4. Retry the commit"
+    exit 1
+  fi
+fi
+
+# ---- Check 2: Auto-update PROGRESS.md ----
+# Only run if deliverables/schemas/tests files changed, to avoid slowing every commit
+if git diff --cached --name-only | grep -qE "(deliverables\.yaml|schemas/|tests/|stages/.*\.md)"; then
+  for project in hermes consilium; do
+    if [ -d "$REPO_ROOT/$project/stages" ]; then
+      python3 "$REPO_ROOT/scripts/update_progress.py" "$project" > /dev/null 2>&1 || true
+      # Stage the updated PROGRESS.md so it's part of this commit
+      if [ -f "$REPO_ROOT/$project/PROGRESS.md" ]; then
+        git add "$REPO_ROOT/$project/PROGRESS.md"
+      fi
+    fi
+  done
+fi
+
+exit 0

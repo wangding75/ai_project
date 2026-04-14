@@ -1,0 +1,2497 @@
+╭─── Claude Code v2.1.105 ─────────────────────────────────────────────────────╮
+│                             │ Tips for getting started                       │
+│     Welcome back Bruce!     │ ✔ Run /init to create a CLAUDE.md file with i… │
+│                             │ ────────────────────────────────────────────── │
+│           ▐▛███▜▌           │ Recent activity                                │
+│          ▝▜█████▛▘          │ No recent activity                             │
+│            ▘▘ ▝▝            │                                                │
+│                             │                                                │
+│   Sonnet 4.6 · Claude Pro   │                                                │
+│      ~/git/ai_project       │                                                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+❯ 你有哪些 gstack 技能？                                                        
+
+● Skill(gstack)
+  ⎿  Successfully loaded skill · 3 tools allowed
+
+● Bash(_UPD=$(~/.claude/skills/gstack/bin/gstack-update-check 2>/dev/null ||
+      .claude/skills/gstack/bin/gstack-update-check 2>/dev/null || true)
+      [ -n "$_UPD" ] && echo…)
+  ⎿  BRANCH: main
+     PROACTIVE:
+     PROACTIVE_PROMPTED: no
+     … +5 lines (ctrl+o to expand)
+
+  Listed 1 directory (ctrl+o to expand)
+
+● gstack follows the Boil the Lake principle — always do the complete thing when
+   AI makes the marginal cost near-zero. Read more:
+  https://garryslist.org/posts/boil-the-ocean
+
+  Want me to open that essay in your browser?
+
+● Bash(touch ~/.gstack/.completeness-intro-seen)
+  ⎿  Done
+
+● ---
+  以下是所有可用的 gstack 技能（slash commands）：
+
+  核心工作流
+
+  ┌──────────────┬─────────────────────────────┐
+  │     技能     │            用途             │
+  ├──────────────┼─────────────────────────────┤
+  │ /qa          │ 测试网站、查找 bug、QA 验证 │
+  ├──────────────┼─────────────────────────────┤
+  │ /investigate │ 调试 bug、错误、异常行为    │
+  ├──────────────┼─────────────────────────────┤
+  │ /ship        │ 部署、推送、创建 PR         │
+  ├──────────────┼─────────────────────────────┤
+  │ /review      │ 代码审查、检查 diff         │
+  ├──────────────┼─────────────────────────────┤
+  │ /health      │ 代码质量健康检查            │
+  └──────────────┴─────────────────────────────┘
+
+  规划与设计
+
+  ┌──────────────────────┬────────────────────────────────┐
+  │         技能         │              用途              │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /office-hours        │ 产品想法、头脑风暴、"值得做吗" │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /plan-ceo-review     │ 策略、范围、雄心审查           │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /plan-eng-review     │ 架构与测试审查                 │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /plan-design-review  │ 设计审查                       │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /plan-devex-review   │ 开发体验审查                   │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /autoplan            │ 自动运行所有审查流程           │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /design-consultation │ 设计系统、品牌、视觉标识       │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /design-review       │ 线上站点视觉审计               │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /design-html         │ HTML 设计                      │
+  ├──────────────────────┼────────────────────────────────┤
+  │ /design-shotgun      │ 快速设计变体                   │
+  └──────────────────────┴────────────────────────────────┘
+
+  安全与控制
+
+  ┌───────────┬────────────────────┐
+  │   技能    │        用途        │
+  ├───────────┼────────────────────┤
+  │ /careful  │ 安全模式，谨慎操作 │
+  ├───────────┼────────────────────┤
+  │ /guard    │ 保护模式           │
+  ├───────────┼────────────────────┤
+  │ /freeze   │ 锁定目录，限制编辑 │
+  ├───────────┼────────────────────┤
+  │ /unfreeze │ 解锁目录           │
+  └───────────┴────────────────────┘
+
+  其他工具
+
+  ┌───────────────────┬────────────────────────┐
+  │       技能        │          用途          │
+  ├───────────────────┼────────────────────────┤
+  │ /checkpoint       │ 保存进度、检查点、恢复 │
+  ├───────────────────┼────────────────────────┤
+  │ /retro            │ 每周回顾、回顾发布内容 │
+  ├───────────────────┼────────────────────────┤
+  │ /document-release │ 发布后更新文档         │
+  ├───────────────────┼────────────────────────┤
+  │ /codex            │ 获取独立第二意见       │
+  ├───────────────────┼────────────────────────┤
+  │ /benchmark        │ 性能基准测试           │
+  ├───────────────────┼────────────────────────┤
+  │ /learn            │ 记录学习内容           │
+  ├───────────────────┼────────────────────────┤
+  │ /gstack-upgrade   │ 升级 gstack            │
+  └───────────────────┴────────────────────────┘
+
+  核心能力：gstack browse
+
+  内置无头浏览器（Chromium），支持：
+  - 页面导航与截图
+  - 元素交互（点击、填表、上传）
+  - 响应式布局测试
+  - 控制台错误检查
+  - 前后状态 diff 对比
+
+✻ Sautéed for 57s
+
+❯ /plan                                                                         
+  ⎿  Enabled plan mode
+
+❯ 从软件工程角度，怎么能驱动模型独立完成生产级代码的交付？  1.                  
+                                                                                
+    前面说的是一个具体项目的流程，我还有一些通用约束，比如类似开发编码          
+                                                                                
+    规范.md的文档，是对所有项目生效的。 2.                                      
+                                                                                
+    项目上线以后还有迭代需求，怎么在这个流程上体现 3.                           
+                                                                                
+    我希望是测试驱动开发，先根据接口文档写用力，再做业务代码开发。              
+                                                                                
+    这是补充需求，你接下来。   首先我们先讨论的是，这里会涉及很多文档           
+                                                                                
+    ，先设计下目录结构，规范文档的存储，在项目开发到某个阶段时，能够读          
+                                                                                
+    取对应的阶段文档，进行开发，不读取其他阶段的文档，减少上下文的消耗          
+  先设计下目录规范                                                              
+
+● Explore(Explore current project structure)
+  ⎿  Done (10 tool uses · 23.6k tokens · 31s)
+  (ctrl+o to expand)
+
+● 现在我对项目结构有了清晰认识，开始规划。
+
+● Updated plan
+  ⎿  /plan to preview
+  ⎿  Tool use rejected
+
+● 好的，明白。用进度文档替代 DONE 标记文件，更清晰。让我修改计划。
+
+● Updated plan
+  ⎿  /plan to preview
+
+● Updated plan
+  ⎿  /plan to preview
+
+● Updated plan
+  ⎿  /plan to preview  ⎿  Tool use rejected
+
+● 好，这是 TDD 的核心纪律：测试即契约，不可被实现反向改写。在工作流和 CLAUDE.md
+  的约束里加入这条规则。
+
+● Updated plan
+  ⎿  /plan to preview
+  ⎿  Tool use rejected
+
+● 计划已保存为 MD 文档，路径：
+
+  /home/wangding/.claude/plans/lovely-wondering-hollerith.md
+
+  你可以直接查阅。评估完成、确认没有问题后，告诉我开始创建文件。
+
+● User approved Claude's plan
+  ⎿  Plan saved to: ~/.claude/plans/lovely-wondering-hollerith.md · /plan to 
+     edit
+     目录规范设计计划
+
+     Context
+
+     用户管理多个 AI 驱动的软件项目（当前有
+     hermes、consilium），需要一套规范的文档目录结构，满足：
+     1. 全局开发规范：编码规范、TDD 流程等对所有项目生效
+     2. 阶段隔离：每个开发阶段只加载对应文档，不加载其他阶段文档，减少 context
+     消耗
+     3. TDD 工作流：先从接口文档写测试用例，再写业务代码
+     4. 迭代支持：项目上线后的迭代需求有独立的文档组织
+
+     ---
+     目录结构设计
+
+     ai_project/
+     ├── CLAUDE.md                          # 根层：说明全局规范位置 +
+     各项目入口
+     ├── standards/                         # 全局规范（对所有项目生效）
+     │   ├── coding-standards.md            # 编码规范（语言、风格、命名）
+     │   ├── tdd-workflow.md                # TDD 工作流规范
+     │   ├── git-workflow.md                # Git 分支、提交信息规范
+     │   └── api-design-standards.md        # API 设计规范
+     │
+     ├── hermes/
+     │   ├── CLAUDE.md                      # 【阶段指针】只引用当前阶段文档
+     │   ├── PROGRESS.md                    # 【进度文档】记录当前阶段 +
+     各迭代状态
+     │   ├── stages/
+     │   │   ├── 01-requirements/
+     │   │   │   └── requirements.md
+     │   │   ├── 02-system-design/
+     │   │   │   ├── system-design.md
+     │   │   │   └── api-spec.md
+     │   │   ├── 03-module-design/
+     │   │   │   ├── module-design.md
+     │   │   │   └── api-spec.md            # 详细接口文档（TDD 阶段的输入）
+     │   │   ├── 04-development/            # TDD 开发阶段
+     │   │   │   ├── WORKFLOW.md            # TDD 步骤说明
+     │   │   │   └── tests/                 # 测试用例（先写，从 api-spec 生成）
+     │   │   ├── 05-testing/
+     │   │   │   └── test-plan.md
+     │   │   ├── 06-deployment/
+     │   │   │   ├── deployment-plan.md
+     │   │   │   └── infrastructure.md
+     │   │   └── 07-operations/
+     │   │       ├── runbook.md
+     │   │       └── monitoring.md
+     │   └── iterations/                    # 上线后迭代
+     │       ├── v1.1/
+     │       │   ├── CLAUDE.md              # 本次迭代专用上下文
+     │       │   ├── requirements.md        # 本次迭代需求变更
+     │       │   ├── api-changes.md         # 接口变更
+     │       │   └── tests/                 # 新增/修改的测试
+     │       └── v1.2/
+     │
+     └── consilium/
+         ├── CLAUDE.md
+         ├── PROGRESS.md
+         ├── stages/
+         └── iterations/
+
+     ---
+     核心设计原则
+
+     1. 阶段隔离（减少 context 消耗）
+
+     PROGRESS.md 是项目进度的唯一事实来源，记录所有阶段的完成状态：
+
+     # Hermes 项目进度
+
+     ## 当前状态
+     - **阶段**：03 - Module Design（进行中）
+     - **迭代**：v1.0（首次发布，尚未上线）
+
+     ## 阶段进度
+     | 阶段 | 名称 | 状态 | 完成时间 |
+     |------|------|------|---------|
+     | 01 | Requirements | ✅ 完成 | 2026-03-10 |
+     | 02 | System Design | ✅ 完成 | 2026-03-25 |
+     | 03 | Module Design | 🔄 进行中 | — |
+     | 04 | Development | ⏳ 待开始 | — |
+     | 05 | Testing | ⏳ 待开始 | — |
+     | 06 | Deployment | ⏳ 待开始 | — |
+     | 07 | Operations | ⏳ 待开始 | — |
+
+     ## 迭代历史
+     | 版本 | 状态 | 发布时间 |
+     |------|------|---------|
+     | v1.0 | 🔄 开发中 | — |
+
+     CLAUDE.md 只做引用控制，不记录进度。每次只指向当前阶段：
+
+     # Project: Hermes
+     > 当前进度见 PROGRESS.md
+
+     ## 必读（全局规范）
+     - @../../standards/coding-standards.md
+     - @../../standards/tdd-workflow.md
+
+     ## 当前阶段文档（仅此阶段）
+     - @./stages/03-module-design/module-design.md
+     - @./stages/03-module-design/api-spec.md
+
+     ## 其他阶段文档（勿主动读取）
+     - stages/01-requirements/、stages/02-system-design/ 已完成，按需查阅
+
+     进入下一阶段时，只需更新两处：PROGRESS.md 的状态行 + CLAUDE.md 的引用路径。
+
+     2. TDD 工作流（第 04 阶段专用）
+
+     stages/04-development/WORKFLOW.md 规定严格的两步流程：
+
+     步骤 1：写测试（Red Phase）
+       - 读取 ../03-module-design/api-spec.md
+       - 在 ./tests/ 下为每个模块创建测试文件
+       - 运行测试 → 全部应该 FAIL（尚无实现）
+       - ⛔ 测试文件写入后即锁定，禁止任何修改
+
+     步骤 2：写实现（Green Phase）
+       - 根据测试文件编写业务代码（只能改实现，不能改测试）
+       - 运行测试 → 全部应该 PASS
+       - Refactor → 保持测试通过
+       - 如果测试无法通过，修改实现而非测试
+
+     测试文件不可修改原则：
+     测试用例从 api-spec.md 派生，代表接口契约。一旦写入
+     tests/，任何修改都意味着"降低标准"，严格禁止。若接口本身需要变更，应先修改
+     api-spec.md 并经过评审，再重新生成测试。
+
+     在 CLAUDE.md 中通过指令强制此约束：
+
+     ## ⛔ 禁止修改
+     - stages/04-development/tests/ 下的所有文件为只读契约
+     - 不得以任何理由修改测试文件（包括"让测试通过"）
+     - 如需变更，走接口变更流程：修改 api-spec.md → 重新评审 → 重写测试
+
+     CLAUDE.md 在阶段 04 时引用：
+     - ../03-module-design/api-spec.md（测试用例的输入，参考用）
+     - ./WORKFLOW.md（TDD 流程）
+     - ./tests/（当前测试用例状态，只读）
+     - 不引用任何业务实现代码文档（让模型自由实现）
+
+     3. 迭代管理（上线后）
+
+     每次迭代在 iterations/vX.Y/ 下创建独立目录，有自己的 CLAUDE.md：
+
+     # Iteration: v1.1
+     **Base Version:** v1.0 (production)
+
+     ## 变更范围
+     - @./requirements.md      # 本次迭代需求
+     - @./api-changes.md       # 接口变更（diff 格式）
+
+     ## 参考（仅在需要时手动读取）
+     - ../../stages/03-module-design/api-spec.md   # 原始接口（对比用）
+
+     ## 工作流
+     与 Stage 04 相同：先写 ./tests/ 中的新测试，再实现变更
+
+     4. 根层 CLAUDE.md 职责
+
+     # AI Project 开发规范
+
+     ## 结构说明
+     本仓库管理多个 AI 驱动项目。每个项目有独立的 CLAUDE.md 作为阶段指针。
+
+     ## 全局规范位置
+     - standards/coding-standards.md
+     - standards/tdd-workflow.md
+     - standards/git-workflow.md
+     - standards/api-design-standards.md
+
+     ## 项目列表
+     - hermes/       金融量化投资平台
+     - consilium/    智囊团共识平台
+
+     ## 使用规则
+     1. 进入项目时，读取该项目的 CLAUDE.md
+     2. CLAUDE.md 指定的文档之外，不主动读取其他阶段文档
+     3. 所有编码遵循 standards/ 下的规范
+
+     ---
+     文件清单（需创建）
+
+     ┌────────────────────────────────────────────┬────────────────────────────┐
+     │                  文件路径                  │            说明            │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ ai_project/CLAUDE.md                       │ 根层入口，项目列表 +       │
+     │                                            │ 规范位置                   │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ ai_project/standards/coding-standards.md   │ 编码规范                   │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ ai_project/standards/tdd-workflow.md       │ TDD 工作流                 │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ ai_project/standards/git-workflow.md       │ Git 规范                   │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ ai_project/standards/api-design-standards. │ API 规范                   │
+     │ md                                         │                            │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ hermes/PROGRESS.md                         │ Hermes 项目进度（阶段 +    │
+     │                                            │ 迭代状态）                 │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ consilium/PROGRESS.md                      │ Consilium 项目进度         │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ hermes/stages/04-development/WORKFLOW.md   │ TDD 步骤说明               │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ hermes/iterations/                         │ 迭代目录（上线后按版本创建 │
+     │                                            │ ）                         │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ consilium/stages/                          │ Consilium 阶段目录结构     │
+     └────────────────────────────────────────────┴────────────────────────────┘
+
+     已有文件迁移：
+     - hermes/Hermes-AI金融量化投资平台需求文档.md →
+     hermes/stages/01-requirements/requirements.md
+     - hermes/系统设计文档.md → hermes/stages/02-system-design/system-design.md
+     - consilium/docs/ 内容 → consilium/stages/ 对应阶段
+
+     ---
+     验证方式
+
+     1. 查看 CLAUDE.md 层级，确认只引用当前阶段文档
+     2. 模拟"进入阶段 04"：更新项目 CLAUDE.md，确认只有 api-spec.md + 
+     WORKFLOW.md + tests/ 被加载
+     3. 模拟"开始迭代 v1.1"：在 iterations/v1.1/ 创建 CLAUDE.md，确认 context
+     隔离正确
+     4. TDD 验证：在阶段 04 中，先运行测试确认 FAIL，再实现后确认 PASS
+
+     GSTACK REVIEW REPORT
+
+     ┌────────┬─────────────────────┬───────────────┬──────┬────────┬──────────┐
+     │ Review │       Trigger       │      Why      │ Runs │ Status │ Findings │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ CEO    │ /plan-ceo-review    │ Scope &       │ 0    │ —      │ —        │
+     │ Review │                     │ strategy      │      │        │          │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ Codex  │ /codex review       │ Independent   │ 0    │ —      │ —        │
+     │ Review │                     │ 2nd opinion   │      │        │          │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ Eng    │                     │ Architecture  │      │        │          │
+     │ Review │ /plan-eng-review    │ & tests       │ 0    │ —      │ —        │
+     │        │                     │ (required)    │      │        │          │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ Design │                     │               │      │        │          │
+     │        │ /plan-design-review │ UI/UX gaps    │ 0    │ —      │ —        │
+     │ Review │                     │               │      │        │          │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ DX     │                     │ Developer     │      │        │          │
+     │ Review │ /plan-devex-review  │ experience    │ 0    │ —      │ —        │
+     │        │                     │ gaps          │      │        │          │
+     └────────┴─────────────────────┴───────────────┴──────┴────────┴──────────┘
+
+     VERDICT: NO REVIEWS YET — run /autoplan for full review pipeline, or
+     individual reviews above.
+
+● 计划已批准，开始实施。先读取现有文件再操作。
+
+  Read 2 files (ctrl+o to expand)
+
+● 现在开始创建目录结构和文件。
+
+● Bash(mkdir -p /home/wangding/git/ai_project/standards
+      mkdir -p /home/wangding/git/ai_project/hermes/stages/01-requirements…)
+  ⎿  Directories created
+
+● Bash(cd /home/wangding/git/ai_project
+      git mv "hermes/Hermes-AI金融量化投资平台需求文档.md"
+      "hermes/stages/01-requirements/requirements.md"…)
+  ⎿  Hermes docs migrated
+
+● Bash(cd /home/wangding/git/ai_project
+      # Check consilium docs structure…)
+  ⎿  ARCHITECTURE.md
+     DEVELOPMENT.md
+     PRD.md
+     … +6 lines (ctrl+o to expand)
+
+  Listed 1 directory (ctrl+o to expand)
+
+● Bash(git status --short)
+  ⎿  R  "hermes/Hermes-AI\351\207\221\350\236\215\351\207\217\345\214\226\3
+     46\212\225\350\265\204\345\271\263\345\217\260\351\234\200\346\261\202
+     \346\226\207\346\241\243.md" -> hermes/stages/01-requirements/requirem
+     … +3 lines (ctrl+o to expand)
+
+● Bash(cd /home/wangding/git/ai_project
+      git mv "consilium/智囊团_完整设计开发文档.md"
+      "consilium/stages/01-requirements/design-doc.md"…)
+  ⎿  Consilium docs migrated
+
+● 现在创建所有新文件：
+
+● Write(CLAUDE.md)
+  ⎿  Wrote 28 lines to CLAUDE.md
+      1 # AI Project 开发规范
+      2 
+      3 ## 结构说明
+      4 
+      5 本仓库管理多个 AI 驱动项目。每个项目有独立的 `CLAUDE.md` 作为阶段
+        指针，`PROGRESS.md` 记录项目进度。
+      6 
+      7 ## 全局规范
+      8 
+      9 以下规范对所有项目生效，每次开发前必读：
+     … +22 lines (ctrl+o to expand)
+
+● Write(standards/coding-standards.md)
+  ⎿  Wrote 64 lines to standards/coding-standards.md
+       1 # 编码规范
+       2 
+       3 > 适用范围：所有项目，所有语言
+       4 
+       5 ## 通用原则
+       6 
+       7 - **可读性优先**：代码是写给人看的，其次才是机器执行
+       8 - **单一职责**：每个函数/类只做一件事
+       9 - **命名即注释**：变量名、函数名应自解释，减少注释依赖
+      10 - **失败快速**：在函数入口校验参数，尽早 raise/return
+     … +54 lines (ctrl+o to expand)
+
+● Write(standards/tdd-workflow.md)
+  ⎿  Wrote 80 lines to standards/tdd-workflow.md
+      2 # TDD 工作流规范
+      3 > 测试驱动开发（Test-Driven Development）是本项目所有开发阶段的强
+        制工作流。
+      4 
+      5 ## 核心原则
+      6 
+      7 **测试即契约**：测试用例从接口文档派生，一旦写入即为契约。实现必
+        须满足测试，而不是反过来。
+      8 
+      9 ## 标准流程
+     … +77 lines (ctrl+o to expand)
+
+● Write(standards/git-workflow.md)
+  ⎿  Wrote 68 lines to standards/git-workflow.md
+       1 # Git 工作流规范
+       2 
+       3 > 适用范围：所有项目
+       4 
+       5 ## 分支策略
+       6 
+       7 ```
+       8 main          # 生产分支，只接受 PR 合并，不直接推送
+       9 develop       # 集成分支，各功能分支合并到这里
+      10 feature/xxx   # 功能开发分支，从 develop 创建
+     … +59 lines (ctrl+o to expand)
+
+● Write(standards/api-design-standards.md)  ⎿  Wrote 105 lines to standards/api-design-standards.md
+      1 # API 设计规范
+      2 
+      3 > 适用范围：所有项目的接口文档（api-spec.md）和 REST API 设计
+      4 
+      5 ## 接口文档（api-spec.md）规范
+      6 
+      7 `api-spec.md` 是 TDD 阶段的输入，必须足够精确让模型直接从中生成测
+        试用例。
+      8 
+      9 ### 必须包含的信息
+     … +96 lines (ctrl+o to expand)
+
+● Write(hermes/PROGRESS.md)
+  ⎿  Wrote 30 lines to hermes/PROGRESS.md
+       1 # Hermes 项目进度
+       2 
+       3 ## 当前状态
+       4 
+       5 - **阶段**：02 - System Design（进行中）
+       6 - **迭代**：v1.0（首次发布，开发中）
+       7 
+       8 ## 阶段进度
+       9 
+      10 | 阶段 | 名称 | 状态 | 完成时间 |
+     … +21 lines (ctrl+o to expand)
+
+● Write(hermes/stages/04-development/WORKFLOW.md)
+  ⎿  Wrote 92 lines to hermes/stages/04-development/WORKFLOW.md
+      1 # 开发阶段 TDD 工作流
+      2 
+      3 > 进入本阶段前，确认 `stages/03-module-design/api-spec.md` 已完成
+        并评审通过。
+      4 
+      5 ## 前提条件
+      6 
+      7 - [x] 阶段 03（模块接口设计）已完成
+      8 - [x] `stages/03-module-design/api-spec.md` 已定稿
+      9 - [ ] 开发环境已配置（数据库、依赖包）
+     … +85 lines (ctrl+o to expand)
+
+● 现在更新 hermes/CLAUDE.md 为新的阶段指针格式：
+
+● Write(hermes/CLAUDE.md)
+  ⎿  Added 26 lines, removed 96 lines
+       1 -# Hermes · AI 金融量化投资平台                                 
+       1 +# Project: Hermes · AI 金融量化投资平台                        
+       2  
+       3 -## 项目简介                                                    
+       3 +> 当前进度见 [PROGRESS.md](PROGRESS.md)                        
+       4  
+       5 -面向 A 股市场的全栈 AI 量化投资平台。整合多因子选股、14套策略、
+         -AI 模型评分、情绪周期系统、风控体系，定位为**决策支持工具**（非
+         -自动决策系统），通过 Telegram 推送信号，用户手动执行并回填交易 
+         -记录。                                                         
+       5 +## 必读（全局规范）                                            
+       6  
+       7 ----                                                            
+       7 +- [编码规范](../standards/coding-standards.md)                 
+       8 +- [TDD 工作流规范](../standards/tdd-workflow.md)               
+       9 +- [Git 工作流规范](../standards/git-workflow.md)               
+      10 +- [API 设计规范](../standards/api-design-standards.md)         
+      11  
+       9 -## 开发阶段与进度                                              
+      12 +## 当前阶段文档（仅读此阶段）                                  
+      13  
+      11 -| 阶段 | 产出物 | 状态 |                                       
+      12 -|------|--------|------|                                       
+      13 -| ① 需求分析 | `Hermes-AI金融量化投资平台需求文档.md` V1.4 | ✅
+         - 完成 |                                                        
+      14 -| ② 系统设计 | `系统设计文档.md` | ⏳ 进行中（下一步） |       
+      15 -| ③ 模块开发设计 | 各模块接口设计文档 | ❌ 未开始 |            
+      16 -| ④ 开发 | 源代码 | ❌ 未开始 |                                
+      17 -| ⑤ 测试验证 | 验证脚本 + 回测结果 | ❌ 未开始 |               
+      18 -| ⑥ 上线部署 | Docker 部署配置 | ❌ 未开始 |                   
+      19 -| ⑦ 监控运维 | 告警 + 日志体系 | ❌ 未开始 |                   
+      14 +**当前阶段：02 - System Design**                               
+      15  
+      21 -**当前阶段：② 系统设计**                                       
+      16 +- [系统设计文档](stages/02-system-design/system-design.md)     
+      17  
+      23 ----                                                            
+      24 -                                                               
+      25 -## 阶段规则（重要）                                            
+      26 -                                                               
+      27 -- **每个阶段必须产出对应文档后才能进入下一阶段**               
+      28 -- **④ 开发阶段**：每次只开发一个模块，开发完立即用真实数据验证 
+         -，通过后才开始下一个模块                                       
+      29 -- **不使用 Mock 数据**：A 股数据接口字段差异大，Mock 掩盖真实问
+         -题                                                             
+      30 -- **5个验证检查点（CP）**，按顺序推进，CP 未通过不进入下一个   
+      31 -                                                               
+      32 -### 5个验证检查点                                              
+      33 -                                                               
+      34 -| CP | 验收标准 |                                              
+      35 -|----|----------|                                              
+      36 -| CP1 数据层 | 真实日线数据写入 ClickHouse |                   
+      37 -| CP2 因子+模型 | 对一只股票算出 AI 评分并打印 |               
+      38 -| CP3 策略+信号 | 对一天候选股生成信号列表 |                   
+      39 -| CP4 推送 | Telegram 收到格式正确的信号消息 |                 
+      40 -| CP5 回填+记录 | 手动回填后数据库有记录、效果追踪有数据 |     
+      41 -                                                               
+      42 ----                                                            
+      43 -                                                               
+      18  ## 已确认的关键技术决策
+      19  
+      20  | 决策 | 选型 |
+     ...
+       31  | 主数据源 | Tushare Pro |
+       32  | 备用数据源 | AkShare（自动降级切换） |
+       33  
+       60 ----                                                           
+       34 +## 阶段规则                                                   
+       35  
+       62 -## 已确认的核心业务规则                                       
+       36 +- 每个阶段必须产出对应文档后才能进入下一阶段                  
+       37 +- **阶段 04 开发**：严格 TDD，先写测试再写实现，测试文件写入后
+          +禁止修改                                                      
+       38 +- **不使用 Mock 数据**：A 股接口字段差异大，Mock 掩盖真实问题 
+       39 +- 5个验证检查点（CP），按顺序推进，CP 未通过不进入下一个      
+       40  
+       64 -### 股票池过滤（Universe Filter）                             
+       65 -- 剔除：ST/\*ST、上市未满60交易日、科创板(688)、北交所(8xxxxx)
+       66 -- 流动性：近20日日均成交额 ≥ 5000万                           
+       67 -- 价格：≥ 1元；流通市值：≥ 20亿                               
+       68 -- 停牌：当日自动跳过                                          
+       41 +## ⛔ 禁止事项                                                
+       42  
+       70 -### 回测严格性                                                
+       71 -- 复权：前复权（qfq）                                         
+       72 -- 财务数据：按公告披露日（ann_date）对齐，非报告截止日        
+       73 -- 前向偏差：T 日只能使用 T-1 及更早数据                       
+       74 -- 涨停日不买入，跌停日不卖出，顺延至下一可交易日              
+       75 -- 滑点：买0.1% + 卖0.1% + 手续费0.03%                         
+       76 -- 流动性约束：单笔 ≤ 当日成交量5%                             
+       43 +- 不得主动读取非当前阶段的文档（参考时手动读取，不自动加载）  
+       44 +- 阶段 04 后：`stages/04-development/tests/` 下所有文件为只读 
+          +契约，禁止修改                                                
+       45 +- 不得跳过阶段直接进入实现                                    
+       46  
+       78 -### 模型训练                                                  
+       79 -- Walk-forward 滚动窗口：3年训练 / 1季度验证 / 每季度重训     
+       47 +## 其他阶段文档（勿主动读取，存档备查）                       
+       48  
+       81 -### 仓位规则                                                  
+       82 -- 单票上限：总资产25%（含持仓市值）                           
+       83 -- 凯利公式：实际仓位 = min(Kelly结果, 25%)                    
+       84 -                                                              
+       85 -### 情绪分阈值                                                
+       86 -| 分数 | 阶段 | 仓位上限 |                                    
+       87 -|------|------|----------|                                    
+       88 -| 0–30 | 冰点期 | 20% |                                       
+       89 -| 31–55 | 回暖期 | 50% |                                      
+       90 -| 56–75 | 主升期 | 90% |                                      
+       91 -| 76–100 | 高潮期 | 50% |                                     
+       92 -- 阶段切换需情绪分 MA5 持续穿越阈值确认                       
+       93 -                                                              
+       94 -### 系统故障恢复                                              
+       95 -- 自动重试3次（间隔5分钟）→ 失败推送 Telegram 告警 + 记录日志 
+          -+ 标记待补跑                                                  
+       96 -                                                              
+       97 ----                                                           
+       98 -                                                              
+       99 -## 项目文件结构（当前）                                       
+      100 -                                                              
+      101 -```                                                           
+      102 -Hermes/                                                       
+      103 -├── CLAUDE.md                          # 本文件               
+      104 -├── .gitignore                                                
+      105 -└── Hermes-AI金融量化投资平台需求文档.md  # ①需求分析产出（V1.
+          -4）                                                           
+      106 -```                                                           
+      107 -                                                              
+      108 ----                                                           
+      109 -                                                              
+      110 -## 需求文档关键章节速查                                       
+      111 -                                                              
+      112 -| 内容 | 章节 |                                               
+      113 -|------|------|                                               
+      114 -| 股票池定义 | §十六 |                                        
+      115 -| Telegram Bot 交互 | §十七 |                                 
+      116 -| 停牌处理 | §十八 |                                          
+      117 -| 故障恢复 | §十九 |                                          
+      118 -| 14套策略 | §五 |                                            
+      119 -| 情绪系统 | §六 |                                            
+      120 -| 交易系统（A/B阶段）| §七 |                                  
+      121 -| 风控体系 | §八 |                                            
+      122 -| 回测严格性标准 | §十 |                                      
+      123 -| 通信系统（N8N架构）| §十二 |                                
+      124 -| 全局设计原则 | 附录A |                                      
+       49 +- `stages/01-requirements/requirements.md` ✅ 完成            
+       50 +- `stages/03-module-design/` ⏳ 待开始                        
+       51 +- `stages/04-development/` ⏳ 待开始                          
+       52 +- `stages/05-testing/` ⏳ 待开始                              
+       53 +- `stages/06-deployment/` ⏳ 待开始                           
+       54 +- `stages/07-operations/` ⏳ 待开始                           
+
+● Write(consilium/PROGRESS.md)
+  ⎿  Wrote 30 lines to consilium/PROGRESS.md
+       1 # Consilium 项目进度
+       2 
+       3 ## 当前状态
+       4 
+       5 - **阶段**：01 - Requirements（进行中）
+       6 - **迭代**：v1.0（首次发布，开发中）
+       7 
+       8 ## 阶段进度
+       9 
+      10 | 阶段 | 名称 | 状态 | 完成时间 |
+     … +20 lines (ctrl+o to expand)
+
+● Write(consilium/CLAUDE.md)
+  ⎿  Added 32 lines, removed 7 lines
+       1 -# CLAUDE.md                                                    
+       1 +# Project: Consilium · 智囊团共识平台                          
+       2  
+       3 -This file provides guidance to Claude Code (claude.ai/code) whe
+         -n working with code in this repository.                        
+       3 +> 当前进度见 [PROGRESS.md](PROGRESS.md)                        
+       4  
+       5 -## Repository Overview                                         
+       5 +## 必读（全局规范）                                            
+       6  
+       7 -This repository contains only documentation (`智囊团_完整设计开
+         -发文档.docx` - a Chinese design/development document) and does 
+         -not currently contain source code.                             
+       7 +- [编码规范](../standards/coding-standards.md)                 
+       8 +- [TDD 工作流规范](../standards/tdd-workflow.md)               
+       9 +- [Git 工作流规范](../standards/git-workflow.md)               
+      10 +- [API 设计规范](../standards/api-design-standards.md)         
+      11  
+       9 -## Status                                                      
+      12 +## 当前阶段文档（仅读此阶段）                                  
+      13  
+      11 -- No source code present - repository contains only documentati
+         -on                                                             
+      12 -- No build/test/lint commands available                        
+      14 +**当前阶段：01 - Requirements**                                
+      15 +                                                               
+      16 +- [完整设计开发文档](stages/01-requirements/design-doc.md)     
+      17 +- [产品需求文档 PRD](stages/01-requirements/prd.md)            
+      18 +                                                               
+      19 +## 阶段规则                                                    
+      20 +                                                               
+      21 +- 每个阶段必须产出对应文档后才能进入下一阶段                   
+      22 +- **阶段 04 开发**：严格 TDD，先写测试再写实现，测试文件写入后 
+         +禁止修改                                                       
+      23 +- 5个验证检查点（CP），按顺序推进，CP 未通过不进入下一个       
+      24 +                                                               
+      25 +## ⛔ 禁止事项                                                 
+      26 +                                                               
+      27 +- 不得主动读取非当前阶段的文档（参考时手动读取，不自动加载）   
+      28 +- 阶段 04 后：`stages/04-development/tests/` 下所有文件为只读契
+         +约，禁止修改                                                   
+      29 +                                                               
+      30 +## 其他阶段文档（勿主动读取，存档备查）                        
+      31 +                                                               
+      32 +- `stages/02-system-design/architecture.md` ⏳ 待开始          
+      33 +- `stages/03-module-design/development.md` ⏳ 待开始           
+      34 +- `stages/04-development/` ⏳ 待开始                           
+      35 +- `stages/05-testing/` ⏳ 待开始                               
+      36 +- `stages/06-deployment/` ⏳ 待开始                            
+      37 +- `stages/07-operations/` ⏳ 待开始                            
+
+● Bash(git status --short)
+  ⎿   M consilium/CLAUDE.md
+     R  "consilium/\346\231\272\345\233\212\345\233\242_\345\256\214\346\22
+     5\264\350\256\276\350\256\241\345\274\200\345\217\221\346\226\207\346\
+     … +13 lines (ctrl+o to expand)
+
+● 所有文件就位，结构如下：
+
+  ai_project/
+  ├── CLAUDE.md                          ← 新建（根层入口）
+  ├── standards/                         ← 新建（全局规范）
+  │   ├── coding-standards.md
+  │   ├── tdd-workflow.md
+  │   ├── git-workflow.md
+  │   └── api-design-standards.md
+  │
+  ├── hermes/
+  │   ├── CLAUDE.md                      ← 改写（阶段指针格式）
+  │   ├── PROGRESS.md                    ← 新建（进度文档）
+  │   └── stages/
+  │       ├── 01-requirements/requirements.md    ← 迁移
+  │       ├── 02-system-design/system-design.md  ← 迁移
+  │       └── 04-development/WORKFLOW.md         ← 新建（TDD 流程）
+  │
+  └── consilium/
+      ├── CLAUDE.md                      ← 改写
+      ├── PROGRESS.md                    ← 新建
+      └── stages/
+          ├── 01-requirements/design-doc.md + prd.md  ← 迁移
+          ├── 02-system-design/architecture.md         ← 迁移
+          └── 03-module-design/development.md          ← 迁移
+
+  关键机制：
+  - CLAUDE.md = 阶段指针，只引用当前阶段文档 → 控制 context
+  - PROGRESS.md = 进度事实来源，记录阶段状态和变更历史
+  - 推进阶段时：改 PROGRESS.md 状态 + 改 CLAUDE.md 引用路径，两处操作
+  - TDD 阶段的 tests/ 写入后通过 CLAUDE.md 指令约束为只读
+
+✻ Baked for 7m 6s
+
+❯ /plan                                                                         
+  ⎿  Enabled plan mode
+
+❯ /model                                                                        
+  ⎿  Set model to Opus 4.6
+
+❯ 这里设计了一个目录规范，目标是驱动模型独立交付生产级业务代码，头脑风暴一下是  
+  否存在优化空间                                                                
+
+● 先说总体感受：整体设计思路清晰，阶段隔离 + TDD 锁定的思路是对的。但要真正驱动
+  模型"独立交付生产级代码"，有几个关键薄弱点，按影响力排序：
+
+  🔴 Finding 1：软约束 vs 硬约束（最关键）
+
+  当前 CLAUDE.md 里的"禁读其他阶段文档""测试文件只读"全是文本说服。模型在压力场
+  景下（比如测试一直失败）可能"创造性"绕过 —— 去改测试而非改实现。
+
+  建议：把软约束变成机械阻断
+  - 用 .claude/settings.json 的 permissions.deny：进入阶段 04 后，阻止
+  Edit/Write 对 stages/04-development/tests/** 的写入
+  - 用 pre-commit hook 检测 tests/ 目录变更，遇到则 reject
+  - 用 chmod -w + git hook 双重保护
+
+  🔴 Finding 2：接口文档可执行化
+
+  api-spec.md 是自然语言
+  Markdown，模型从中"解读"出测试。每次解读可能不一致，甚至会漏掉边界情况。这是
+  TDD 链条最脆弱的一环。
+
+  建议：接口源头用可执行 schema
+  - Pydantic models（Python 原生） 或 OpenAPI YAML 作为真实源头
+  - api-spec.md 只做设计说明，不作为测试派生源
+  - 测试从 schema 机械生成（或至少有脚本校验测试覆盖了所有 schema 字段）
+
+  这样消除"人解读文档 → 模型解读文档"的双重模糊。
+
+  🟡 Finding 3："生产级"维度缺失
+
+  TDD 测试通过 = 功能正确，但生产级 = 功能正确 + 可观测性 + 性能 + 安全 +
+  可恢复。当前流程里这些要素要么散落在阶段 06/07（太晚），要么根本没提。
+
+  建议：把"非功能性要求"前置到阶段 03 的 api-spec
+
+  每个接口强制填写：
+  - SLO：P99 响应时间、可用性目标
+  - 日志字段：必须打印的 trace_id、业务字段
+  - 指标：暴露的 Prometheus 指标
+  - 降级策略：外部依赖挂掉时的 fallback
+  - 安全：认证方式、限流阈值
+
+  阶段 04 的 TDD 除了功能测试，还要有性能测试 + 日志字段断言。
+
+  🟡 Finding 4：阶段推进缺少门禁
+
+  PROGRESS.md 是手动维护的。模型（或人）可以在阶段没真正完成时就改成 ✅ 
+  完成，推进到下一阶段。没有机器可验证的 Definition of Done。
+
+  建议：每阶段定义机器可验证的 DoD + 自动化推进脚本
+
+  scripts/advance-stage.sh 03
+    ↓
+    检查：api-spec.md 存在？覆盖所有模块？Pydantic schema 能 import？
+    通过 → 更新 PROGRESS.md + CLAUDE.md + git commit
+    失败 → 拒绝推进，打印缺失项
+
+  🟢 次要观察（值得但不紧急）
+
+  - CLAUDE.md 本身太重：Hermes 的 CLAUDE.md 含大量技术决策 +
+  业务规则，每次对话都加载。可拆成 core-constraints.md（<50 行，永远加载）+
+  decisions.md（按需）
+  - 迭代 vs 测试锁定冲突：iterations/v1.1 若修改已有接口，老测试锁定策略没说清。
+  建议强制"迭代只能新增，修改走接口版本化（v1 → v2）"
+  - 跨项目经验沉淀：根层缺 learnings/，每阶段完成后做 retro 写入，未来项目可检索
+
+  ---
+  以上哪几点你想深入？我可以针对性地细化设计方案（包括具体的配置文件、脚本、目录
+  调整）。
+
+● User answered Claude's questions:
+  ⎿  · 想优先深入哪个方向？ → 硬约束保护（Finding 1）, 接口 schema 化（Finding 
+     2）, 生产级维度前置（Finding 3）, 阶段门禁自动化（Finding 4）,  
+     每个阶段都应该规定确定的产出，产出完成后，进度自动维护成完成。
+
+● 用户想全部四个方向都做，并加了新约束："每阶段应规定确定的产出，产出完成后进度
+  自动维护成完成"。这是对已有目录结构方案的硬化升级。先读一下现有计划文件再决定
+  如何修改。
+
+  Read 1 file (ctrl+o to expand)
+
+● 原计划已执行完毕，文件已落地。新需求是在已有结构上做硬化升级。我将完全重写计划
+  文件聚焦到这四个优化方向 + 新的自动进度需求。
+
+● Updated plan
+  ⎿  /plan to preview
+
+● User approved Claude's plan
+  ⎿  Plan saved to: ~/.claude/plans/lovely-wondering-hollerith.md · /plan to 
+     edit
+     目录规范硬化升级计划
+
+     Context
+
+     基础目录结构已落地（standards/、stages/、PROGRESS.md、CLAUDE.md 阶段指针已
+     就位）。但该结构靠文本说服模型遵守规则，在真实生产级交付场景下存在 4
+     个脆弱点：
+
+     1. 软约束：CLAUDE.md
+     的"禁读其他阶段""测试只读"全靠模型自律，模型在压力下可能绕过
+     2. 接口文档模糊：api-spec.md 是
+     Markdown，模型每次解读可能不一致，测试生成不可复现
+     3. 生产级维度缺失：当前流程只保证功能正确，没有要求 SLO/日志/监控/降级
+     4. 阶段推进无门禁：PROGRESS.md 手动维护，没有"Definition of
+     Done"校验，可以在未完成时假装完成
+
+     新增需求：每阶段规定确定的产出清单，产出完成后进度自动维护为完成（减少人工
+     维护，让状态与事实一致）。
+
+     目标：把当前的"纸面规范"升级为"机械可验证、自动推进、难以绕过"的工作流，真
+     正驱动模型独立交付生产级代码。
+
+     ---
+     四个优化轨道
+
+     轨道 1：硬约束保护（Finding 1）
+
+     把"测试只读"和"阶段隔离"从文本约束变成机械阻断。
+
+     三层防护：
+
+     1. Claude Code 工具层（最直接）
+       - 修改 ai_project/.claude/settings.local.json，在 permissions.deny
+     中加入：
+       {
+       "permissions": {
+         "deny": [
+           "Edit(**/stages/04-development/tests/**)",
+           "Write(**/stages/04-development/tests/**)",
+           "Bash(rm *stages/04-development/tests*)"
+         ]
+       }
+     }
+       - 进入阶段 04 写完测试后，项目级 .claude/settings.local.json 激活这些
+     deny 规则
+       - 模型的 Edit/Write 工具在这些路径上会被直接拒绝
+     2. Git 层（兜底）
+       - 新增 .githooks/pre-commit 脚本：
+           - 检测所有 stages/*/04-development/tests/** 的变更
+         - 若变更，验证 .git/locks/tests-stage-04 文件是否存在（锁标记）
+         - 若存在锁标记 → git commit 被拒绝
+       - 进入阶段 04 时创建锁标记：touch .git/locks/tests-stage-04
+     3. 文件系统层（防手滑）
+       - scripts/lock-tests.sh：chmod -w -R stages/04-development/tests/
+       - 任何进程（包括模型）写入时会直接 EACCES
+       - 需要重写测试时（走接口变更流程）用 scripts/unlock-tests.sh 配合审批
+
+     关键文件：
+     - 新建：ai_project/.claude/settings.local.json（更新 deny 规则）
+     - 新建：ai_project/.githooks/pre-commit
+     - 新建：ai_project/scripts/lock-tests.sh + unlock-tests.sh
+     - 更新：ai_project/standards/tdd-workflow.md（说明三层保护机制）
+
+     ---
+     轨道 2：接口 Schema 化（Finding 2）
+
+     让接口定义从"自然语言"变为"可执行 schema"，测试机械派生，消除解读歧义。
+
+     新结构：
+
+     stages/03-module-design/
+     ├── module-design.md           # 叙事性设计文档（架构图、决策理由）
+     ├── api-spec.md                # 人类可读的接口说明（补充性）
+     └── schemas/                   # 【接口真相源头】
+         ├── __init__.py
+         ├── common.py              # 公共类型（错误码、分页、响应包装）
+         ├── data_layer.py          # 每个模块一个 schema 文件
+         ├── factor_engine.py
+         ├── strategy.py
+         └── slo.yaml               # 非功能性约束（见轨道 3）
+
+     Pydantic 接口定义示例：
+
+     # stages/03-module-design/schemas/data_layer.py
+     from pydantic import BaseModel, Field
+     from datetime import date
+     from typing import Literal
+
+     class FetchDailyRequest(BaseModel):
+         symbol: str = Field(..., pattern=r"^\d{6}\.(SZ|SH)$",
+     description="股票代码")
+         start_date: date
+         end_date: date
+         adjust: Literal["qfq", "hfq", "none"] = "qfq"
+
+     class DailyBar(BaseModel):
+         trade_date: date
+         open: float = Field(..., gt=0)
+         high: float = Field(..., gt=0)
+         low: float = Field(..., gt=0)
+         close: float = Field(..., gt=0)
+         volume: int = Field(..., ge=0)
+
+     class FetchDailyResponse(BaseModel):
+         symbol: str
+         bars: list[DailyBar]
+
+     # 异常声明（编码在类型里，不在注释里）
+     class DataLayerErrors:
+         INVALID_SYMBOL = "data_layer.invalid_symbol"
+         DATA_NOT_FOUND = "data_layer.data_not_found"
+         UPSTREAM_TIMEOUT = "data_layer.upstream_timeout"
+
+     测试派生规则：
+     - TDD 阶段 04 的 tests/ 必须 import 这些 schema
+     - 每个 schema 字段必须至少被一个测试断言（正常值 + 边界值 + 无效值）
+     - 每个声明的 error code 必须至少被一个测试覆盖
+     - 覆盖检查脚本：scripts/check-schema-coverage.sh（扫描 schemas +
+     tests，生成差异报告）
+
+     关键文件：
+     - 新建：hermes/stages/03-module-design/schemas/（目录 + 样板文件）
+     - 新建：ai_project/scripts/check-schema-coverage.sh
+     - 更新：standards/api-design-standards.md（增加 "schema 作为源头"
+     章节，Markdown 只作补充）
+     - 更新：standards/tdd-workflow.md（说明测试必须引用 schema）
+
+     ---
+     轨道 3：生产级维度前置（Finding 3）
+
+     把"生产级"要求从阶段 06/07 提前到阶段 03
+     接口设计，让它成为接口契约的一部分。
+
+     新 api-spec 模板（每个接口强制填写）：
+
+     ## 接口：FetchDaily
+
+     ### 功能契约（Schema）
+     参见 `schemas/data_layer.py::FetchDailyRequest / FetchDailyResponse`
+
+     ### SLO 契约
+     | 指标 | 目标 |
+     |------|------|
+     | P50 延迟 | < 50ms |
+     | P99 延迟 | < 300ms |
+     | 可用性 | 99.5% |
+     | 错误率 | < 0.1% |
+
+     ### 可观测性契约
+     **必须打印的日志字段：**
+     - `trace_id`（贯穿整条请求链路）
+     - `symbol`, `start_date`, `end_date`（业务参数）
+     - `duration_ms`（性能追踪）
+     - `upstream_source`（Tushare/AkShare，哪个数据源命中）
+
+     **必须暴露的指标（Prometheus）：**
+     - `hermes_data_fetch_requests_total{symbol, source, status}` (Counter)
+     - `hermes_data_fetch_duration_seconds{symbol, source}` (Histogram)
+     - `hermes_data_fetch_cache_hit_total{symbol}` (Counter)
+
+     ### 降级契约
+     | 场景 | 降级策略 |
+     |------|---------|
+     | Tushare 超时 | 自动切换 AkShare |
+     | AkShare 也失败 | 返回最近缓存（带 stale 标记）|
+     | 缓存也没有 | 返回 UPSTREAM_TIMEOUT 错误，记录到补跑队列 |
+
+     ### 安全契约
+     - 认证：内部调用，无需用户认证
+     - 限流：单实例 10 req/s（防止上游封禁）
+     - 输入校验：symbol 正则匹配，date 范围 ≤ 3 年
+
+     阶段 04 TDD 新增非功能性测试：
+
+     stages/04-development/tests/
+     ├── test_data_layer.py              # 功能测试（Red/Green TDD）
+     ├── test_data_layer_logging.py      # 日志字段断言（解析日志输出）
+     ├── test_data_layer_metrics.py      # Prometheus 指标存在性测试
+     ├── test_data_layer_fallback.py     # 降级行为测试（Mock 上游失败）
+     └── test_data_layer_perf.py         # 性能基线测试（P99 < 300ms）
+
+     关键文件：
+     - 更新：standards/api-design-standards.md（加入生产级契约模板）
+     - 更新：standards/tdd-workflow.md（加入非功能性测试要求）
+     - 新建：hermes/stages/03-module-design/schemas/slo.yaml（机器可读的 SLO
+     定义）
+
+     ---
+     轨道 4：阶段门禁自动化 + 产出清单 + 自动进度（Finding 4 + 用户新增需求）
+
+     把"阶段完成"从手动声明变成机器验证 + 自动维护。
+
+     每阶段一个 deliverables.yaml：
+
+     # hermes/stages/03-module-design/deliverables.yaml
+     stage: 03-module-design
+     name: Module Design
+
+     deliverables:
+       - id: module-design-doc
+         type: file
+         path: module-design.md
+         required: true
+         min_size_bytes: 2000
+
+       - id: interface-schemas
+         type: dir
+         path: schemas/
+         required: true
+         min_files: 3
+         pattern: "*.py"
+
+       - id: schemas-importable
+         type: command
+         cmd: "cd schemas && python -c 'import data_layer, factor_engine, 
+     strategy'"
+
+       - id: slo-definitions
+         type: file
+         path: schemas/slo.yaml
+         required: true
+
+       - id: api-spec-narrative
+         type: file
+         path: api-spec.md
+         required: true
+         must_contain:
+           - "SLO 契约"
+           - "可观测性契约"
+           - "降级契约"
+
+     checks:
+       - id: all-modules-have-schema
+         cmd: scripts/check-schema-coverage.sh stages/03-module-design
+
+     阶段 04 的 deliverables.yaml：
+
+     stage: 04-development
+     name: Development (TDD)
+
+     deliverables:
+       - id: workflow-doc
+         type: file
+         path: WORKFLOW.md
+         required: true
+
+       - id: test-files
+         type: dir
+         path: tests/
+         pattern: "test_*.py"
+         min_files: 5
+
+       - id: tests-red-phase-commit
+         type: git
+         must_exist: "test(.*): add TDD test cases"
+
+       - id: tests-locked
+         type: file
+         path: ../../.git/locks/tests-stage-04
+         required: true
+
+       - id: tests-pass
+         type: command
+         cmd: "pytest tests/ -v"
+         expect_exit_code: 0
+
+       - id: coverage-threshold
+         type: command
+         cmd: "pytest --cov=. --cov-fail-under=85"
+         expect_exit_code: 0
+
+       - id: non-functional-tests
+         type: files
+         path: tests/
+         patterns:
+           - "test_*_logging.py"
+           - "test_*_metrics.py"
+           - "test_*_fallback.py"
+
+     核心脚本：
+
+     1. scripts/check-stage.sh <stage-id>
+       - 读取对应阶段的 deliverables.yaml
+       - 逐项验证每个 deliverable
+       - 输出：PASS / FAIL + 详细缺失项
+       - 返回码：0 = 全部通过，非 0 = 有缺失
+     2. scripts/update-progress.sh <project>
+       - 对每个阶段运行 check-stage.sh
+       - 根据结果自动更新 <project>/PROGRESS.md：
+           - 全部通过 → 该阶段标记 ✅ 完成（含时间戳）
+         - 部分通过 → 🔄 进行中（附进度百分比）
+         - 全部失败 → ⏳ 待开始
+       - 只读取事实（文件 + 命令），不修改 CLAUDE.md 或做推进
+       - 可以作为 pre-commit hook 或 CI 步骤自动运行
+     3. scripts/advance-stage.sh <project> <from-stage> <to-stage>
+       - 先运行 check-stage.sh <from-stage>，必须全部通过
+       - 更新 PROGRESS.md：from-stage 标记为 ✅，to-stage 标记为 🔄
+       - 更新 <project>/CLAUDE.md：
+           - 把 "当前阶段" 指针指向 to-stage
+         - 替换"当前阶段文档"区块的文件引用
+       - 创建 git commit：stage: advance <project> from <from> to <to>
+       - 如果推进到阶段 04，自动执行 lock-tests.sh
+
+     自动进度维护触发时机：
+     - Git pre-commit hook：每次提交时跑 update-progress.sh，PROGRESS.md
+     自动更新
+     - 手动触发：开发过程中可随时 make progress 查看当前状态
+     - CI 跑：推送后跑一遍，保证仓库状态和事实一致
+
+     PROGRESS.md 变为"生成文件"：
+     - 顶部加注释：<!-- Auto-generated by scripts/update-progress.sh. Manual 
+     edits will be overwritten. -->
+     - 唯一手动维护的是"变更记录"区块（scripts/update-progress.sh 保留该区块）
+
+     关键文件：
+     - 新建：ai_project/scripts/check-stage.sh
+     - 新建：ai_project/scripts/update-progress.sh
+     - 新建：ai_project/scripts/advance-stage.sh
+     - 新建：每个 stages/XX-*/deliverables.yaml（7 个阶段 × 2 个项目 = 14 个）
+     - 新建：ai_project/.githooks/pre-commit（包含 update-progress 调用）
+     - 更新：所有 PROGRESS.md（顶部加生成注释）
+     - 新建：ai_project/Makefile（make progress, make check-stage, make advance
+     快捷命令）
+
+     ---
+     总体文件清单
+
+     新建文件
+
+     ┌─────────────────────────────────────────────────┬───────────────────────┐
+     │                      路径                       │         说明          │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ ai_project/.claude/settings.local.json          │ 更新 permissions.deny │
+     │                                                 │  规则                 │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ ai_project/.githooks/pre-commit                 │ 测试锁定 +            │
+     │                                                 │ 进度自动更新          │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ ai_project/scripts/check-stage.sh               │ 阶段产出验证          │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ ai_project/scripts/update-progress.sh           │ 自动更新 PROGRESS.md  │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ ai_project/scripts/advance-stage.sh             │ 阶段推进              │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ ai_project/scripts/lock-tests.sh                │ 锁定测试目录          │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ ai_project/scripts/unlock-tests.sh              │ 解锁测试目录（需审批  │
+     │                                                 │ ）                    │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ ai_project/scripts/check-schema-coverage.sh     │ Schema                │
+     │                                                 │ 与测试覆盖度检查      │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ ai_project/Makefile                             │ 快捷命令入口          │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ hermes/stages/01-requirements/deliverables.yaml │ 阶段 01 产出清单      │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ hermes/stages/02-system-design/deliverables.yam │ 阶段 02 产出清单      │
+     │ l                                               │                       │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ hermes/stages/03-module-design/deliverables.yam │ 阶段 03 产出清单      │
+     │ l                                               │                       │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ hermes/stages/03-module-design/schemas/__init__ │ Schema 目录           │
+     │ .py                                             │                       │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ hermes/stages/03-module-design/schemas/slo.yaml │ 非功能性约束样板      │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ hermes/stages/04-development/deliverables.yaml  │ 阶段 04 产出清单（含  │
+     │                                                 │ TDD 要求）            │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ hermes/stages/05-testing/deliverables.yaml      │ 阶段 05 产出清单      │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ hermes/stages/06-deployment/deliverables.yaml   │ 阶段 06 产出清单      │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ hermes/stages/07-operations/deliverables.yaml   │ 阶段 07 产出清单      │
+     ├─────────────────────────────────────────────────┼───────────────────────┤
+     │ consilium/stages/*/deliverables.yaml            │ Consilium 对应 7      │
+     │                                                 │ 个阶段产出清单        │
+     └─────────────────────────────────────────────────┴───────────────────────┘
+
+     更新文件
+
+     ┌────────────────────────────────────────────┬────────────────────────────┐
+     │                    路径                    │            变更            │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ ai_project/standards/tdd-workflow.md       │ 说明三层保护、schema       │
+     │                                            │ 引用、非功能性测试         │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ ai_project/standards/api-design-standards. │ schema 作为真实源头、生产  │
+     │ md                                         │ 级契约模板                 │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ ai_project/standards/coding-standards.md   │ 引用 schema 类型注解要求   │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ ai_project/CLAUDE.md                       │ 补充自动化脚本使用说明     │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ hermes/CLAUDE.md                           │ 说明自动进度更新机制       │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ hermes/PROGRESS.md                         │ 加生成注释头               │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ consilium/CLAUDE.md                        │ 同上                       │
+     ├────────────────────────────────────────────┼────────────────────────────┤
+     │ consilium/PROGRESS.md                      │ 加生成注释头               │
+     └────────────────────────────────────────────┴────────────────────────────┘
+
+     ---
+     实施顺序
+
+     按依赖关系分 3 批实施：
+
+     批次 1：脚本和规范（基础设施）
+     1. 创建 scripts/check-stage.sh + update-progress.sh + advance-stage.sh
+     2. 创建 Makefile
+     3. 更新 standards/*.md
+
+     批次 2：schema 化 + 产出清单
+     1. 创建 schemas/ 目录和样板
+     2. 为每个阶段写 deliverables.yaml
+     3. 创建 check-schema-coverage.sh
+
+     批次 3：硬约束激活
+     1. 创建 lock-tests.sh / unlock-tests.sh
+     2. 创建 .githooks/pre-commit
+     3. 更新 .claude/settings.local.json
+     4. 安装 git hooks：git config core.hooksPath .githooks
+
+     ---
+     验证方式
+
+     轨道 1：硬约束
+
+     1. Claude 工具层：在 settings.local.json 激活 deny 后，尝试让模型 Edit
+     stages/04-development/tests/test_foo.py → 应被拒绝
+     2. Git hook 层：直接 echo "change" >> tests/test_foo.py && git commit →
+     pre-commit 拒绝
+     3. 文件系统层：运行 lock-tests.sh 后 echo x >> tests/test_foo.py → EACCES
+     错误
+
+     轨道 2：Schema 化
+
+     1. 在 schemas/data_layer.py 定义 schema
+     2. 写对应 test_data_layer.py，故意漏掉某个字段
+     3. 运行 check-schema-coverage.sh → 应该报告缺失覆盖
+
+     轨道 3：生产级维度
+
+     1. 写一个不含 SLO 章节的 api-spec.md
+     2. 运行 check-stage.sh 03-module-design → 应该 FAIL，报告 "api-spec.md
+     missing 'SLO 契约'"
+
+     轨道 4：自动门禁 + 自动进度
+
+     1. check-stage.sh：
+       - 空目录运行 → 报告所有 deliverable 缺失
+       - 手动创建部分文件 → 报告已完成 N/M
+       - 全部创建 → PASS
+     2. update-progress.sh：
+       - 初始状态：所有阶段 ⏳
+       - 完成 stage 01 所有 deliverables → 自动变 ✅
+       - 完成一半 stage 02 → 自动变 🔄 50%
+     3. advance-stage.sh：
+       - stage 02 未完成就想推进到 03 → 拒绝
+       - stage 02 完成后推进到 03 → CLAUDE.md 和 PROGRESS.md 都更新，git commit
+     创建
+       - 推进到 04 → 自动触发 lock-tests.sh
+     4. 完整 E2E 测试：
+       - 从空项目开始，按顺序完成每个阶段的产出
+       - 每次完成后 make progress 查看状态
+       - 整个过程不需要手动编辑 PROGRESS.md 和 CLAUDE.md
+
+     ---
+     预期效果
+
+     - 模型独立交付：进入阶段 04 后，模型只能读当前阶段文档 +
+     schema，不能读其他阶段文档，不能修改测试。只能通过修改实现让测试通过。
+     - 可复现性：接口定义是可执行 schema，不同模型/不同时间生成的测试一致。
+     - 生产级默认：接口设计阶段就强制 SLO/日志/监控/降级，阶段 04
+     自动生成非功能性测试。
+     - 零人工维护：进度状态是"事实的映射"，跑一次 check-stage 就自动反映到
+     PROGRESS.md。
+     - 不可绕过：三层保护（工具层/Git 层/文件系统层）使得"创造性绕过"成本极高。
+
+     GSTACK REVIEW REPORT
+
+     ┌────────┬─────────────────────┬───────────────┬──────┬────────┬──────────┐
+     │ Review │       Trigger       │      Why      │ Runs │ Status │ Findings │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ CEO    │ /plan-ceo-review    │ Scope &       │ 0    │ —      │ —        │
+     │ Review │                     │ strategy      │      │        │          │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ Codex  │ /codex review       │ Independent   │ 0    │ —      │ —        │
+     │ Review │                     │ 2nd opinion   │      │        │          │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ Eng    │                     │ Architecture  │      │        │          │
+     │ Review │ /plan-eng-review    │ & tests       │ 0    │ —      │ —        │
+     │        │                     │ (required)    │      │        │          │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ Design │                     │               │      │        │          │
+     │        │ /plan-design-review │ UI/UX gaps    │ 0    │ —      │ —        │
+     │ Review │                     │               │      │        │          │
+     ├────────┼─────────────────────┼───────────────┼──────┼────────┼──────────┤
+     │ DX     │                     │ Developer     │      │        │          │
+     │ Review │ /plan-devex-review  │ experience    │ 0    │ —      │ —        │
+     │        │                     │ gaps          │      │        │          │
+     └────────┴─────────────────────┴───────────────┴──────┴────────┴──────────┘
+
+     VERDICT: NO REVIEWS YET — run /autoplan for full review pipeline, or
+     individual reviews above.
+
+● 计划已批准。任务量较大，先建任务列表追踪进度。
+● 先创建 scripts 目录和核心脚本。用 Python 实现（需要处理
+  YAML、多种检查类型、字符串操作）。
+
+● Bash(mkdir -p /home/wangding/git/ai_project/scripts
+      /home/wangding/git/ai_project/.githooks
+      echo "Dirs created")
+  ⎿  Dirs created
+
+● Write(scripts/check_stage.py)
+  ⎿  Wrote 244 lines to scripts/check_stage.py
+       2 """usr/bin/env python3
+       3 check_stage.py — 验证某个项目的某个阶段是否满足 deliverables.yam
+         l 定义的产出清单
+       4 
+       5 Usage:
+       6   scripts/check_stage.py <project> <stage-id>
+       7   scripts/check_stage.py hermes 03-module-design
+       8 
+       9 Exit codes:
+      10   0 = all deliverables met
+     … +253 lines (ctrl+o to expand)
+
+● Write(scripts/update_progress.py)
+  ⎿  Wrote 170 lines to scripts/update_progress.py
+       2 """usr/bin/env python3
+       3 update_progress.py — 根据 check_stage 结果自动重写 <project>/PRO
+         GRESS.md
+       4 
+       5 Usage:
+       6   scripts/update_progress.py <project>
+       7   scripts/update_progress.py hermes
+       8 
+       9 规则：
+      10   - 遍历 <project>/stages/XX-*/ 所有阶段
+     … +173 lines (ctrl+o to expand)
+
+● Write(scripts/advance_stage.py)
+  ⎿  Wrote 165 lines to scripts/advance_stage.py
+       1 #!/usr/bin/env python3
+       2 """
+       3 advance_stage.py — 从当前阶段推进到下一阶段
+       4 
+       5 Usage:
+       6   scripts/advance_stage.py <project>
+       7   scripts/advance_stage.py hermes
+       8 
+       9 流程：
+      10   1. 定位 <project>/PROGRESS.md 确定当前阶段
+     … +170 lines (ctrl+o to expand)
+
+● Bash(chmod +x /home/wangding/git/ai_project/scripts/*.py)
+  ⎿  Done
+
+● Write(scripts/lock_tests.sh)
+  ⎿  Wrote 52 lines to scripts/lock_tests.sh
+       2 # lock_tests.sh — 用 chmod 保护测试目录，防止任何进程（包括 AI 
+         模型）修改
+       3 #
+       4 # Usage:
+       5 #   scripts/lock_tests.sh <tests-dir>
+       6 #   scripts/lock_tests.sh hermes/stages/04-development/tests
+       7 #
+       8 # 效果：
+       9 #   - 所有文件变成只读（chmod 444）
+      10 #   - 目录仍可读但不可写（chmod 555）
+     … +43 lines (ctrl+o to expand)
+
+● Write(scripts/unlock_tests.sh)
+  ⎿  Wrote 64 lines to scripts/unlock_tests.sh
+       2 # unlock_tests.sh — 解锁测试目录，必须提供理由，留下审计记录
+       3 #
+       4 # Usage:
+       5 #   scripts/unlock_tests.sh <tests-dir> "<reason>"
+       6 #   scripts/unlock_tests.sh hermes/stages/04-development/tests "
+         接口变更：FetchDaily 增加 adjust 参数"
+       7 #
+       8 # 解锁只应在接口变更流程中使用：
+       9 #   1. 修改 stages/03-module-design/schemas/
+      10 #   2. 解锁
+     … +55 lines (ctrl+o to expand)
+● Bash(chmod +x /home/wangding/git/ai_project/scripts/*.sh)
+  ⎿  Done
+
+● Write(scripts/check_schema_coverage.py)
+  ⎿  Wrote 125 lines to scripts/check_schema_coverage.py
+       2 """usr/bin/env python3
+       3 check_schema_coverage.py — 验证 TDD 测试文件覆盖了 schemas/ 中定
+         义的所有接口契约
+       4 
+       5 Usage:
+       7   scripts/check_schema_coverage.py hermesct>
+       8 
+       9 规则：
+      10   1. 扫描 <project>/stages/03-module-design/schemas/*.py，提取所
+         有 Pydantic model 类名和字段
+     … +132 lines (ctrl+o to expand)
+
+● Bash(chmod +x /home/wangding/git/ai_project/scripts/check_schema_coverage.py)
+  ⎿  Done
+
+● Write(Makefile)
+  ⎿  Wrote 54 lines to Makefile
+         ests unlock-tests install-hooksge advance schema-coverage lock-t
+       2 
+       3 PROJECT ?= hermes
+       5 PY := python3equirements
+       6 
+       7 help:
+       9        @echo ""I Project 工作流命令"
+      10        @echo "  make progress PROJECT=hermes          自动更新 <project
+
+         >/PROGRESS.md"
+     … +54 lines (ctrl+o to expand)
+
+● Write(.githooks/pre-commit)
+  ⎿  Wrote 58 lines to .githooks/pre-commit
+       2 # pre-commit hook — 两个职责：
+       3 # 1. 阻止提交对锁定测试目录的修改
+       4 # 2. 自动跑 update_progress.py 让 PROGRESS.md 与事实一致
+       5 #
+       6 # 安装：make install-hooks  或  git config core.hooksPath .githo
+         oks
+       7 
+       8 set -e
+       9 
+      10 REPO_ROOT="$(git rev-parse --show-toplevel)"
+     … +54 lines (ctrl+o to expand)
+
+● Bash(chmod +x /home/wangding/git/ai_project/.githooks/pre-commit)
+  ⎿  Done
+
+● 现在更新 settings.local.json 加入 deny 规则：
+
+  Read 1 file (ctrl+o to expand)
+
+● Write(.claude/settings.local.json)
+  ⎿  Added 6 lines
+       5        "Bash(du -sh /home/wangding/git/ai_project/*)",
+       6        "Bash(git mv:*)",
+       7        "Bash(chmod +x:*)"
+       8 +    ],                                                         
+       9 +    "deny": [                                                  
+      10 +      "Edit(**/stages/04-development/tests/**)",               
+      11 +      "Write(**/stages/04-development/tests/**)",              
+      12 +      "Bash(rm *stages/04-development/tests*)",                
+      13 +      "Bash(chmod *stages/04-development/tests*)"              
+      14      ]
+      15    }
+      16  }
+
+● 更新全局规范文档：
+
+● Write(standards/tdd-workflow.md)
+  ⎿  Added 79 lines, removed 46 lines
+        1  # TDD 工作流规范
+        2  
+        3 -> 测试驱动开发（Test-Driven Development）是本项目所有开发阶段 
+          -的强制工作流。                                                
+        3 +> 测试驱动开发是所有开发阶段的**强制且机械保障**的工作流。    
+        4  
+        5  ## 核心原则
+        6  
+        7 -**测试即契约**：测试用例从接口文档派生，一旦写入即为契约。实现
+          -必须满足测试，而不是反过来。                                  
+        7 +**测试即契约**：测试从 schema 派生，一旦写入即被机械锁定。实现
+          +必须适配测试，而不是反过来。                                  
+        8  
+        9 +## 三层保护机制（Finding 1）                                  
+       10 +                                                              
+       11 +测试锁定不是靠说服，而是靠三层机械阻断，任一层都能拦截未授权的
+          +修改：                                                        
+       12 +                                                              
+       13 +| 层 | 工具 | 效果 |                                          
+       14 +|----|------|------|                                          
+       15 +| 1 | `.claude/settings.local.json` 的 `permissions.deny` | Cl
+          +aude Code 的 `Edit`/`Write` 工具对 `tests/` 路径直接拒绝 |    
+       16 +| 2 | `.githooks/pre-commit` | 检测 staged 文件，若命中锁定目 
+          +录 → `git commit` 被拒 |                                      
+       17 +| 3 | `chmod 444` (由 `lock_tests.sh` 设置) | OS 文件权限，任 
+          +何进程写入得到 EACCES |                                       
+       18 +                                                              
+       19 +推进到阶段 04 时会自动触发 `lock_tests.sh`，锁定状态记录在 `.g
+          +it/locks/`。                                                  
+       20 +                                                              
+       21 +解锁只能走 `unlock_tests.sh`，必须提供理由（≥ 10 字符），留下 
+          +审计记录到 `.git/locks/unlock-audit.log`。                    
+       22 +                                                              
+       23  ## 标准流程
+       24  
+       11 -### 第一步：读取接口文档（输入）                              
+       25 +### 第一步：确认 Schema 已就绪                                
+       26  
+       13 -进入开发阶段前，读取当前阶段的 `api-spec.md`：                
+       14 -- 理解每个接口的输入参数、返回值、错误码                      
+       15 -- 理解边界条件和异常场景                                      
+       16 -- 识别需要测试的模块列表                                      
+       27 +进入阶段 04 前，必须满足：                                    
+       28  
+       18 -### 第二步：写测试用例（Red Phase）                           
+       29 +- `stages/03-module-design/schemas/` 存在                     
+       30 +- 所有模块的 Pydantic model 已定义（见 [API 设计规范](api-desi
+          +gn-standards.md)）                                            
+       31 +- `scripts/check_stage.py <project> 03-module-design` 返回 PAS
+          +S                                                             
+       32 +- `make advance PROJECT=<project>` 成功推进到 04              
+       33  
+       34 +### 第二步：从 Schema 派生测试（Red Phase）                   
+       35 +                                                              
+       36  ```
+       21 -对每个模块：                                                  
+       22 -  1. 在 stages/04-development/tests/ 下创建 test_<module_name>
+          -.py                                                           
+       23 -  2. 覆盖正常路径（Happy Path）                               
+       24 -  3. 覆盖异常路径（Error Path）：无效参数、空数据、超时、外部 
+          -服务不可用                                                    
+       25 -  4. 覆盖边界条件（Edge Cases）                               
+       26 -  5. 运行测试 → 全部应该 FAIL（Red）                          
+       37 +对每个模块 schema：                                           
+       38 +  1. 在 tests/ 下创建 test_<module_name>.py                   
+       39 +  2. 必须 import 对应的 Pydantic model                        
+       40 +  3. 覆盖：                                                   
+       41 +     - 每个字段的有效值、边界值、无效值（触发 ValidationError 
+          +）                                                            
+       42 +     - 每个声明的 error code（DataLayerErrors.XXX 等）        
+       43 +     - Happy Path、Error Path、Edge Case                      
+       44 +  4. 运行 pytest → 全部 FAIL（尚无实现）                      
+       45 +  5. git commit -m "test(<module>): add TDD test cases from sc
+          +hema"                                                         
+       46  ```
+       47  
+       29 -**测试文件写入后立即锁定，禁止任何修改。**                    
+       48 +完成后立即触发锁定：                                          
+       49 +```bash                                                       
+       50 +make lock-tests PROJECT=<project>                             
+       51 +```                                                           
+       52  
+       53 +**此后测试文件为只读契约。**                                  
+       54 +                                                              
+       55  ### 第三步：实现业务代码（Green Phase）
+       56  
+       57  ```
+       34 -对每个测试文件：                                              
+       35 -  1. 编写最简单的实现让测试通过                               
+       36 -  2. 运行对应测试 → 全部 PASS（Green）                        
+       37 -  3. 进行重构（Refactor）→ 保持测试通过                       
+       58 +只能修改 src/ 或实现目录下的代码，禁止触碰 tests/。           
+       59 +  1. 编写最简实现让测试通过                                   
+       60 +  2. pytest → Green                                           
+       61 +  3. Refactor → 保持 Green                                    
+       62 +  4. git commit -m "feat(<module>): implement to pass TDD test
+          +s"                                                            
+       63  ```
+       64  
+       40 -规则：                                                        
+       41 -- **只能修改实现代码，不能修改测试文件**                      
+       42 -- 如果测试无法通过，说明实现有问题，而非测试有问题            
+       43 -- 每个模块独立完成 Red → Green → Refactor，再开始下一个模块   
+       65 +若测试无法通过，**修改实现**而非测试。                        
+       66  
+       45 -### 第四步：集成验证                                          
+       67 +### 第四步：非功能性测试（Finding 3）                         
+       68  
+       47 -所有模块完成后：                                              
+       48 -1. 运行全套测试（`pytest stages/04-development/tests/`）      
+       49 -2. 全部通过后进入阶段 05（测试验证）                          
+       69 +除功能测试外，每个模块必须有：                                
+       70  
+       51 -## 接口变更流程                                               
+       71 +| 文件 | 用途 |                                               
+       72 +|------|------|                                               
+       73 +| `test_<module>_logging.py` | 断言必须打印的日志字段（trace_i
+          +d、业务字段、性能字段） |                                     
+       74 +| `test_<module>_metrics.py` | 断言 Prometheus 指标已注册和暴 
+          +露 |                                                          
+       75 +| `test_<module>_fallback.py` | 降级行为测试（Mock 上游失败， 
+          +验证 fallback 路径）|                                         
+       76 +| `test_<module>_perf.py` | 性能基线测试（P99 满足 SLO 契约） 
+          +|                                                             
+       77  
+       53 -若需要修改接口（进而需要修改测试），走以下流程，**不得跳步**：
+       78 +这些测试的要求定义在 `schemas/slo.yaml`。                     
+       79  
+       80 +### 第五步：覆盖度验证                                        
+       81 +                                                              
+       82 +```bash                                                       
+       83 +make schema-coverage PROJECT=<project>                        
+       84  ```
+       56 -1. 修改 stages/03-module-design/api-spec.md                   
+       57 -2. 在 PROGRESS.md 中记录变更原因和时间                        
+       58 -3. 评审变更（自查：变更是否影响已完成的其他模块？）           
+       59 -4. 删除旧测试文件，重新编写新测试文件                         
+       60 -5. 走正常 TDD 流程                                            
+       61 -```                                                           
+       85  
+       63 -## 测试文件组织                                               
+       86 +确认：                                                        
+       87 +- 每个 Pydantic model 被至少一个测试引用                      
+       88 +- 每个 error code 被至少一个测试覆盖                          
+       89 +- pytest --cov 行覆盖率 ≥ 85%                                 
+       90  
+       91 +## 接口变更流程（禁止跳步）                                   
+       92 +                                                              
+       93 +若必须修改接口（进而需要改测试）：                            
+       94 +                                                              
+       95  ```
+       66 -stages/04-development/tests/                                  
+       67 -├── conftest.py              # 公共 fixtures（数据库连接、Mock
+          - 服务等）                                                     
+       68 -├── test_data_layer.py       # 数据层测试                     
+       69 -├── test_factor_engine.py    # 因子计算测试                   
+       70 -├── test_strategy.py         # 策略信号测试                   
+       71 -├── test_notification.py     # 推送系统测试                   
+       72 -└── test_integration.py      # 跨模块集成测试（最后写）       
+       96 +1. 修改 stages/03-module-design/schemas/<module>.py           
+       97 +2. 跑 make check-stage PROJECT=<project> STAGE=03-module-desig
+          +n（必须 PASS）                                                
+       98 +3. make unlock-tests PROJECT=<project> REASON="接口变更：<详细
+          +原因>"                                                        
+       99 +4. 删除旧的 test_<module>*.py                                 
+      100 +5. 从新 schema 重新生成测试（回到 Red Phase 流程）            
+      101 +6. 实现新功能让测试通过                                       
+      102 +7. make lock-tests PROJECT=<project>                          
+      103  ```
+      104  
+      105 +`unlock-audit.log` 会保留所有解锁历史，便于 review。          
+      106 +                                                              
+      107  ## 测试质量标准
+      108  
+      109  - 每个测试函数只测试一件事
+       78 -- 测试函数名必须描述场景：`test_fetch_daily_returns_empty_df_w
+          -hen_symbol_not_found`                                         
+       79 -- 使用 `pytest.mark` 分组：`@pytest.mark.unit`、`@pytest.mark.
+          -integration`                                                  
+       80 -- Mock 外部依赖（网络、数据库），但本项目禁止 Mock 数据内容（ 
+          -用真实数据验证）                                              
+      110 +- 测试函数名描述场景：`test_fetch_daily_raises_invalid_symbol_
+          +when_malformed`                                               
+      111 +- 使用 `pytest.mark`：`@pytest.mark.unit`、`@pytest.mark.integ
+          +ration`                                                       
+      112 +- Mock 外部 IO（网络、数据库），**禁止 Mock 数据内容**（本项目
+          +用真实数据验证）                                              
+      113 +- 覆盖率：单元测试 ≥ 85%，关键模块（数据层、风控）≥ 95%       
+
+● Write(standards/api-design-standards.md)
+  ⎿  Added 174 lines, removed 72 lines
+        1  # API 设计规范
+        2  
+        3 -> 适用范围：所有项目的接口文档（api-spec.md）和 REST API 设计 
+        3 +> 适用范围：所有项目的接口定义（schemas/）、接口说明（api-spec
+          +.md）、REST API 设计                                          
+        4  
+        5 -## 接口文档（api-spec.md）规范                                
+        5 +## 核心原则：Schema 是真相源头                                
+        6  
+        7 -`api-spec.md` 是 TDD 阶段的输入，必须足够精确让模型直接从中生 
+          -成测试用例。                                                  
+        7 +接口定义有**两种表达形式**，但**只有一种是真相**：            
+        8  
+        9 -### 必须包含的信息                                            
+        9 +| 表达 | 作用 | 状态 |                                        
+       10 +|------|------|------|                                        
+       11 +| `schemas/*.py` (Pydantic) | 机器可执行的真相源头，测试从此派
+          +生 | **权威** |                                               
+       12 +| `api-spec.md` | 人类可读的叙事说明（设计动机、生产级契约）| 
+          +补充性 |                                                      
+       13  
+       11 -每个接口描述必须包含：                                        
+       14 +**任何冲突以 schema 为准。** Markdown 只作为理解辅助，不作为测
+          +试生成依据。                                                  
+       15  
+       13 -```markdown                                                   
+       14 -### 接口名称                                                  
+       16 +## Schema 文件组织                                            
+       17  
+       16 -**功能**：一句话描述该接口的职责                              
+       18 +```                                                           
+       19 +stages/03-module-design/schemas/                              
+       20 +├── __init__.py                                               
+       21 +├── common.py              # 公共类型（错误码基类、分页、响应 
+          +包装）                                                        
+       22 +├── data_layer.py          # 每个模块一个文件                 
+       23 +├── factor_engine.py                                          
+       24 +├── strategy.py                                               
+       25 +└── slo.yaml               # 非功能性约束（SLO/指标/日志字段）
+       26 +```                                                           
+       27  
+       18 -**输入**                                                      
+       19 -| 参数名 | 类型 | 必填 | 说明 |                               
+       20 -|--------|------|------|------|                               
+       21 -| symbol | str  | 是   | 股票代码，如 "000001.SZ" |           
+       28 +## Pydantic Schema 规范                                       
+       29  
+       23 -**输出**                                                      
+       30 +每个模块的 schema 文件必须包含：                              
+       31 +                                                              
+       32 +1. **Request / Response 模型**：继承 `BaseModel`，字段带约束（
+          +`Field(..., pattern=..., gt=..., ge=...)`）                   
+       33 +2. **错误码类**：`class <Module>Errors: ...`，字符串常量      
+       34 +3. **显式导出**：`__all__ = [...]`                            
+       35 +                                                              
+       36 +**示例：**                                                    
+       37 +                                                              
+       38  ```python
+       25 -# 返回类型                                                    
+       26 -pd.DataFrame  # columns: date, open, high, low, close, volume 
+       27 -              # index: DatetimeIndex                          
+       28 -              # 空数据返回空 DataFrame，不返回 None           
+       29 -```                                                           
+       39 +# schemas/data_layer.py                                       
+       40 +from __future__ import annotations                            
+       41 +from pydantic import BaseModel, Field                         
+       42 +from datetime import date                                     
+       43 +from typing import Literal                                    
+       44  
+       31 -**异常场景**                                                  
+       32 -- `ValueError`：symbol 格式不合法                             
+       33 -- `DataNotFoundError`：该股票无数据                           
+       34 -- `APIRateLimitError`：数据源限流                             
+       45 +__all__ = [                                                   
+       46 +    "FetchDailyRequest",                                      
+       47 +    "FetchDailyResponse",                                     
+       48 +    "DailyBar",                                               
+       49 +    "DataLayerErrors",                                        
+       50 +]                                                             
+       51  
+       36 -**约束**                                                      
+       37 -- 只返回已复权（前复权）数据                                  
+       38 -- 最多返回近 3 年数据                                         
+       39 -```                                                           
+       52  
+       41 -## REST API 规范（FastAPI）                                   
+       53 +class FetchDailyRequest(BaseModel):                           
+       54 +    """获取日线行情数据的请求"""                              
+       55  
+       43 -### URL 设计                                                  
+       56 +    symbol: str = Field(                                      
+       57 +        ...,                                                  
+       58 +        pattern=r"^\d{6}\.(SZ|SH)$",                          
+       59 +        description="股票代码，格式 '000001.SZ' 或 '600000.SH'
+          +",                                                            
+       60 +    )                                                         
+       61 +    start_date: date = Field(..., description="起始日期（含）"
+          +)                                                             
+       62 +    end_date: date = Field(..., description="结束日期（含）") 
+       63 +    adjust: Literal["qfq", "hfq", "none"] = Field("qfq", descr
+          +iption="复权方式")                                            
+       64  
+       65 +                                                              
+       66 +class DailyBar(BaseModel):                                    
+       67 +    """单日 OHLCV"""                                          
+       68 +                                                              
+       69 +    trade_date: date                                          
+       70 +    open: float = Field(..., gt=0)                            
+       71 +    high: float = Field(..., gt=0)                            
+       72 +    low: float = Field(..., gt=0)                             
+       73 +    close: float = Field(..., gt=0)                           
+       74 +    volume: int = Field(..., ge=0)                            
+       75 +                                                              
+       76 +                                                              
+       77 +class FetchDailyResponse(BaseModel):                          
+       78 +    symbol: str                                               
+       79 +    bars: list[DailyBar]                                      
+       80 +                                                              
+       81 +                                                              
+       82 +class DataLayerErrors:                                        
+       83 +    """数据层错误码"""                                        
+       84 +                                                              
+       85 +    INVALID_SYMBOL = "data_layer.invalid_symbol"              
+       86 +    DATA_NOT_FOUND = "data_layer.data_not_found"              
+       87 +    UPSTREAM_TIMEOUT = "data_layer.upstream_timeout"          
+       88 +    CACHE_STALE = "data_layer.cache_stale"                    
+       89  ```
+       46 -GET    /api/v1/stocks/{symbol}/daily          # 获取日线数据  
+       47 -GET    /api/v1/stocks/{symbol}/factors        # 获取因子值    
+       48 -POST   /api/v1/trades                         # 创建交易记录  
+       49 -GET    /api/v1/portfolio/positions            # 查询持仓      
+       50 -```                                                           
+       90  
+       52 -原则：                                                        
+       53 -- 资源用名词（复数），不用动词                                
+       54 -- 版本号在路径中（`/v1/`）                                    
+       55 -- 层级不超过 3 层                                             
+       91 +## 生产级契约模板（`api-spec.md` 每个接口必填）               
+       92  
+       57 -### 响应格式                                                  
+       93 +**这不是可选项。** 没有填写这些信息的接口，`check_stage.py` 会
+          +判定 FAIL。                                                   
+       94  
+       59 -**成功响应**                                                  
+       60 -```json                                                       
+       61 -{                                                             
+       62 -  "code": 200,                                                
+       63 -  "data": { ... },                                            
+       64 -  "message": "success"                                        
+       65 -}                                                             
+       95 +```markdown                                                   
+       96 +## 接口：<InterfaceName>                                      
+       97 +                                                              
+       98 +### 功能契约（Schema）                                        
+       99 +参见 `schemas/<module>.py::<Request>` / `<Response>`          
+      100 +                                                              
+      101 +### SLO 契约                                                  
+      102 +| 指标 | 目标 |                                               
+      103 +|------|------|                                               
+      104 +| P50 延迟 | < 50ms |                                         
+      105 +| P99 延迟 | < 300ms |                                        
+      106 +| 可用性 | 99.5% |                                            
+      107 +| 错误率 | < 0.1% |                                           
+      108 +                                                              
+      109 +### 可观测性契约                                              
+      110 +                                                              
+      111 +**必须打印的日志字段：**                                      
+      112 +- `trace_id`（贯穿整条请求链路）                              
+      113 +- `<业务参数1>, <业务参数2>, ...`                             
+      114 +- `duration_ms`（性能追踪）                                   
+      115 +- `<外部依赖命中标记>`                                        
+      116 +                                                              
+      117 +**必须暴露的指标（Prometheus）：**                            
+      118 +- `<project>_<module>_requests_total{...}` (Counter)          
+      119 +- `<project>_<module>_duration_seconds{...}` (Histogram)      
+      120 +                                                              
+      121 +### 降级契约                                                  
+      122 +| 场景 | 降级策略 |                                           
+      123 +|------|---------|                                            
+      124 +| 主上游超时 | 切换备用源 |                                   
+      125 +| 备用源失败 | 返回缓存（stale 标记） |                       
+      126 +| 缓存也没有 | 返回明确错误码，入补跑队列 |                   
+      127 +                                                              
+      128 +### 安全契约                                                  
+      129 +- 认证：<方式>                                                
+      130 +- 限流：<阈值>                                                
+      131 +- 输入校验：<依赖 Pydantic Field 约束>                        
+      132  ```
+      133  
+       68 -**错误响应**                                                  
+       69 -```json                                                       
+       70 -{                                                             
+       71 -  "code": 404,                                                
+       72 -  "data": null,                                               
+       73 -  "message": "Stock 000001.SZ not found",                     
+       74 -  "error_type": "DataNotFoundError"                           
+       75 -}                                                             
+      134 +## SLO YAML 规范                                              
+      135 +                                                              
+      136 +`schemas/slo.yaml` 是机器可读的非功能性约束：                 
+      137 +                                                              
+      138 +```yaml                                                       
+      139 +# schemas/slo.yaml                                            
+      140 +modules:                                                      
+      141 +  data_layer:                                                 
+      142 +    slo:                                                      
+      143 +      p50_latency_ms: 50                                      
+      144 +      p99_latency_ms: 300                                     
+      145 +      availability: 0.995                                     
+      146 +      error_rate: 0.001                                       
+      147 +    logging_required_fields:                                  
+      148 +      - trace_id                                              
+      149 +      - symbol                                                
+      150 +      - start_date                                            
+      151 +      - end_date                                              
+      152 +      - duration_ms                                           
+      153 +      - upstream_source                                       
+      154 +    metrics_required:                                         
+      155 +      - name: hermes_data_fetch_requests_total                
+      156 +        type: counter                                         
+      157 +        labels: [symbol, source, status]                      
+      158 +      - name: hermes_data_fetch_duration_seconds              
+      159 +        type: histogram                                       
+      160 +        labels: [symbol, source]                              
+      161 +    fallback_required: true                                   
+      162  ```
+      163  
+       78 -### HTTP 状态码                                               
+      164 +阶段 04 的 TDD 测试从这个 YAML 生成断言。                     
+      165  
+       80 -| 场景 | 状态码 |                                             
+       81 -|------|--------|                                             
+       82 -| 成功 | 200 OK |                                             
+       83 -| 创建成功 | 201 Created |                                    
+       84 -| 参数错误 | 400 Bad Request |                                
+       85 -| 未授权 | 401 Unauthorized |                                 
+       86 -| 资源不存在 | 404 Not Found |                                
+       87 -| 服务器错误 | 500 Internal Server Error |                    
+       88 -| 限流 | 429 Too Many Requests |                              
+      166 +## REST API 规范（FastAPI 项目）                              
+      167  
+       90 -### 分页                                                      
+      168 +### URL 设计                                                  
+      169  
+      170  ```
+       93 -GET /api/v1/stocks?page=1&page_size=20                        
+      171 +GET    /api/v1/stocks/{symbol}/daily                          
+      172 +POST   /api/v1/trades                                         
+      173 +```                                                           
+      174  
+       95 -响应头：                                                      
+       96 -X-Total-Count: 5000                                           
+       97 -X-Page: 1                                                     
+       98 -X-Page-Size: 20                                               
+      175 +- 资源用名词复数，不用动词                                    
+      176 +- 版本号在路径中                                              
+      177 +- 层级 ≤ 3 层                                                 
+      178 +                                                              
+      179 +### 响应格式（统一包装）                                      
+      180 +                                                              
+      181 +```python                                                     
+      182 +# common.py                                                   
+      183 +class ApiResponse(BaseModel):                                 
+      184 +    code: int                                                 
+      185 +    data: Any | None = None                                   
+      186 +    message: str = "success"                                  
+      187 +    error_type: str | None = None                             
+      188  ```
+      189  
+      190 +### HTTP 状态码                                               
+      191 +                                                              
+      192 +| 场景 | 状态码 |                                             
+      193 +|------|--------|                                             
+      194 +| 成功 | 200 / 201 |                                          
+      195 +| 参数错误 | 400 |                                            
+      196 +| 未授权 | 401 |                                              
+      197 +| 资源不存在 | 404 |                                          
+      198 +| 限流 | 429 |                                                
+      199 +| 服务器错误 | 500 |                                          
+      200 +                                                              
+      201  ## 禁止项
+      202  
+      103 -- 禁止在 GET 请求中传递敏感信息（放 Header）                  
+      104 -- 禁止接口返回不同结构（正常和错误的 schema 要统一）          
+      105 -- 禁止用 200 状态码返回业务错误（用对应的 4xx/5xx）           
+      203 +- 禁止只写 Markdown 不写 Schema（测试就没有真相源头了）       
+      204 +- 禁止在 GET 请求传敏感信息                                   
+      205 +- 禁止不同接口返回不同 schema（error 和 success 要统一包装）  
+      206 +- 禁止用 HTTP 200 返回业务错误                                
+      207 +- 禁止接口定义缺少 SLO/日志/降级契约                          
+
+● Update(standards/coding-standards.md)
+  ⎿  Added 2 lines
+      22  - 所有公开函数必须有完整类型注解（参数 + 返回值）
+      23  - 使用 `from __future__ import annotations` 支持前向引用
+      24  - 复杂类型用 `TypeAlias` 定义别名
+      25 +- **接口层的输入/输出必须用 `stages/03-module-design/schemas/` 
+         +中的 Pydantic model**，不自定义 dataclass                      
+      26 +- 禁止在实现中重新定义接口模型，必须 import 自 schemas         
+      27  
+      28  ```python
+      29  # Good
+● Write(hermes/stages/01-requirements/deliverables.yaml)
+  ⎿  Wrote 11 lines to hermes/stages/01-requirements/deliverables.yaml
+       1 stage: 01-requirements
+       2 name: Requirements（需求分析）
+       3 
+       4 deliverables:
+       5   - id: requirements-doc
+       6     type: file
+       7     path: requirements.md
+       8     required: true
+       9     min_size_bytes: 1000
+      10     must_contain:
+     … +1 line (ctrl+o to expand)
+
+● Write(hermes/stages/02-system-design/deliverables.yaml)
+  ⎿  Wrote 9 lines to hermes/stages/02-system-design/deliverables.yaml
+      1 stage: 02-system-design
+      2 name: System Design（系统设计）
+      3 
+      4 deliverables:
+      5   - id: system-design-doc
+      6     type: file
+      7     path: system-design.md
+      8     required: true
+      9     min_size_bytes: 2000
+
+● Write(hermes/stages/03-module-design/deliverables.yaml)
+  ⎿  Wrote 35 lines to hermes/stages/03-module-design/deliverables.yaml
+      1 stage: 03-module-design
+      2 name: Module Design（模块接口设计）
+      3 
+      4 deliverables:
+      5   - id: module-design-doc
+      6     type: file
+      7     path: module-design.md
+      8     required: true
+      9     min_size_bytes: 500
+     … +26 lines (ctrl+o to expand)
+
+● Write(hermes/stages/04-development/deliverables.yaml)
+  ⎿  Wrote 29 lines to hermes/stages/04-development/deliverables.yaml
+       1 stage: 04-development
+       2 name: Development（TDD 开发）
+       3 
+       4 deliverables:
+       5   - id: workflow-doc
+       6     type: file
+       7     path: WORKFLOW.md
+       8     required: true
+       9 
+      10   - id: test-files
+     … +20 lines (ctrl+o to expand)
+
+● Write(hermes/stages/05-testing/deliverables.yaml)
+  ⎿  Wrote 9 lines to hermes/stages/05-testing/deliverables.yaml
+      1 stage: 05-testing
+      2 name: Testing（测试验证）
+      3 
+      4 deliverables:
+      5   - id: test-plan
+      6     type: file
+      7     path: test-plan.md
+      8     required: true
+      9     min_size_bytes: 500
+
+● Write(hermes/stages/06-deployment/deliverables.yaml)
+  ⎿  Wrote 15 lines to hermes/stages/06-deployment/deliverables.yaml
+      1 stage: 06-deployment
+      2 name: Deployment（上线部署）
+      3 
+      4 deliverables:
+      5   - id: deployment-plan
+      6     type: file
+      7     path: deployment-plan.md
+      8     required: true
+      9     min_size_bytes: 500
+     … +5 lines (ctrl+o to expand)
+
+● Write(hermes/stages/07-operations/deliverables.yaml)
+  ⎿  Wrote 15 lines to hermes/stages/07-operations/deliverables.yaml
+      1 stage: 07-operations
+      2 name: Operations（监控运维）
+      3 
+      4 deliverables:
+      5   - id: runbook
+      6     type: file
+      7     path: runbook.md
+      8     required: true
+      9     min_size_bytes: 300
+     … +5 lines (ctrl+o to expand)
+
+● 现在为 consilium 创建相同的 deliverables。Consilium 的 stage 01 已有
+  design-doc.md 和 prd.md，stage 02 有 architecture.md，stage 03 有
+  development.md：
+
+● Write(consilium/stages/01-requirements/deliverables.yaml)
+  ⎿  Wrote 15 lines to consilium/stages/01-requirements/deliverables.yaml
+      1 stage: 01-requirements
+      2 name: Requirements（需求分析）
+      3 
+      4 deliverables:
+      5   - id: design-doc
+      6     type: file
+      7     path: design-doc.md
+      8     required: true
+      9     min_size_bytes: 1000
+     … +5 lines (ctrl+o to expand)
+
+● Write(consilium/stages/02-system-design/deliverables.yaml)
+  ⎿  Wrote 9 lines to consilium/stages/02-system-design/deliverables.yaml
+      1 stage: 02-system-design
+      2 name: System Design（系统设计）
+      3 
+      4 deliverables:
+      5   - id: architecture-doc
+      6     type: file
+      7     path: architecture.md
+      8     required: true
+      9     min_size_bytes: 2000
+
+● Write(consilium/stages/03-module-design/deliverables.yaml)
+  ⎿  Wrote 30 lines to consilium/stages/03-module-design/deliverables.yaml
+      1 stage: 03-module-design
+      2 name: Module Design（模块接口设计）
+      3 
+      4 deliverables:
+      5   - id: module-design-doc
+      6     type: file
+      7     path: module-design.md
+      8     required: true
+      9     min_size_bytes: 500
+     … +20 lines (ctrl+o to expand)
+
+● Write(consilium/stages/04-development/deliverables.yaml)
+  ⎿  Wrote 23 lines to consilium/stages/04-development/deliverables.yaml
+       1 stage: 04-development
+       2 name: Development（TDD 开发）
+       3 
+       4 deliverables:
+       5   - id: workflow-doc
+       6     type: file
+       7     path: WORKFLOW.md
+       8     required: true
+       9 
+      10   - id: test-files
+     … +13 lines (ctrl+o to expand)
+
+● Write(consilium/stages/05-testing/deliverables.yaml)
+  ⎿  Wrote 9 lines to consilium/stages/05-testing/deliverables.yaml
+      1 stage: 05-testing
+      2 name: Testing（测试验证）
+      3 
+      4 deliverables:
+      5   - id: test-plan
+      6     type: file
+      7     path: test-plan.md
+      8     required: true
+      9     min_size_bytes: 500
+
+● Write(consilium/stages/06-deployment/deliverables.yaml)
+  ⎿  Wrote 15 lines to consilium/stages/06-deployment/deliverables.yaml
+      1 stage: 06-deployment
+      2 name: Deployment（上线部署）
+      3 
+      4 deliverables:
+      5   - id: deployment-plan
+      6     type: file
+      7     path: deployment-plan.md
+      8     required: true
+      9     min_size_bytes: 500
+     … +5 lines (ctrl+o to expand)
+
+● Write(consilium/stages/07-operations/deliverables.yaml)
+  ⎿  Wrote 15 lines to consilium/stages/07-operations/deliverables.yaml
+      1 stage: 07-operations
+      2 name: Operations（监控运维）
+      3 
+      4 deliverables:
+      5   - id: runbook
+      6     type: file
+      7     path: runbook.md
+      8     required: true
+      9     min_size_bytes: 300
+     … +5 lines (ctrl+o to expand)
+
+● 现在创建 hermes schemas 样板（data_layer 作为示例）：
+
+● Write(hermes/stages/03-module-design/schemas/__init__.py)
+  ⎿  Wrote 12 lines to hermes/stages/03-module-design/schemas/__init__.py
+      1 """
+      2 Hermes 模块接口 Schema 定义（接口真相源头）
+      3 
+      4 本包中的每个 .py 文件对应一个业务模块，定义：
+      5   - Request/Response Pydantic model
+      6   - 错误码类（<Module>Errors）
+      7 
+      8 阶段 04 TDD 测试必须从这里 import 模型，任何实现代码也必须 import
+         这里的类型，
+      9 不得自定义 dataclass 重复定义接口。
+     … +3 lines (ctrl+o to expand)
+● Write(hermes/stages/03-module-design/schemas/common.py)
+  ⎿  Wrote 45 lines to hermes/stages/03-module-design/schemas/common.py
+       1 """公共类型：响应包装、错误码基类、分页"""
+       2 from __future__ import annotations
+       3 
+       4 from typing import Any, Generic, TypeVar
+       5 from pydantic import BaseModel, Field
+       6 
+       7 T = TypeVar("T")
+       8 
+       9 __all__ = [
+      10     "ApiResponse",
+     … +36 lines (ctrl+o to expand)
+
+● Write(hermes/stages/03-module-design/schemas/data_layer.py)
+  ⎿  Wrote 68 lines to hermes/stages/03-module-design/schemas/data_layer.py
+       1 """数据层接口 Schema（行情数据获取）"""
+       2 from __future__ import annotations
+       3 
+       4 from datetime import date
+       5 from typing import Literal
+       6 
+       7 from pydantic import BaseModel, Field, field_validator
+       8 
+       9 __all__ = [
+      10     "FetchDailyRequest",
+     … +61 lines (ctrl+o to expand)
+
+● Write(hermes/stages/03-module-design/schemas/slo.yaml)
+  ⎿  Wrote 46 lines to hermes/stages/03-module-design/schemas/slo.yaml
+       1 # Hermes 非功能性约束
+       2 # 本文件是机器可读的 SLO/可观测性/降级要求定义，
+       3 # 阶段 04 TDD 测试从此生成非功能性断言。
+       4 
+       5 modules:
+       6   data_layer:
+       7     slo:
+       8       p50_latency_ms: 50
+       9       p99_latency_ms: 300
+      10       availability: 0.995
+     … +36 lines (ctrl+o to expand)
+
+● 更新根层 CLAUDE.md 和各项目 CLAUDE.md 说明自动化机制：
+
+● Write(CLAUDE.md)
+  ⎿  Added 40 lines, removed 7 lines
+       2  
+       3  ## 结构说明
+       4  
+       5 -本仓库管理多个 AI 驱动项目。每个项目有独立的 `CLAUDE.md` 作为阶
+         -段指针，`PROGRESS.md` 记录项目进度。                           
+       5 +本仓库管理多个 AI 驱动项目。每个项目是独立的阶段化工作流：     
+       6  
+       7 -## 全局规范                                                    
+       7 +- 全局规范在 `standards/`（对所有项目生效）                    
+       8 +- 每个项目有自己的 `CLAUDE.md`（阶段指针）、`PROGRESS.md`（自动
+         +生成的进度）、`stages/`（阶段产出）                            
+       9 +- 每个阶段有 `deliverables.yaml` 定义产出清单，由 `scripts/chec
+         +k_stage.py` 机器验证                                           
+      10  
+       9 -以下规范对所有项目生效，每次开发前必读：                       
+      11 +## 全局规范（必读）                                            
+      12  
+      13  - [编码规范](standards/coding-standards.md)
+      14  - [TDD 工作流规范](standards/tdd-workflow.md)
+     ...
+      17  
+      18  ## 项目列表
+      19  
+      18 -| 项目 | 描述 | 进度 |                                         
+      20 +| 项目 | 描述 | 入口 |                                         
+      21  |------|------|------|
+      20 -| [hermes/](hermes/CLAUDE.md) | AI 金融量化投资平台 | 见 [herme
+         -s/PROGRESS.md](hermes/PROGRESS.md) |                           
+      21 -| [consilium/](consilium/CLAUDE.md) | 智囊团共识平台 | 见 [cons
+         -ilium/PROGRESS.md](consilium/PROGRESS.md) |                    
+      22 +| [hermes/](hermes/CLAUDE.md) | AI 金融量化投资平台 | [PROGRESS
+         +](hermes/PROGRESS.md) |                                        
+      23 +| [consilium/](consilium/CLAUDE.md) | 智囊团共识平台 | [PROGRES
+         +S](consilium/PROGRESS.md) |                                    
+      24  
+      25 +## 自动化工作流                                                
+      26 +                                                               
+      27 +工作流由脚本驱动，用 `make` 调用：                             
+      28 +                                                               
+      29 +```bash                                                        
+      30 +# 自动更新进度（根据事实重写 PROGRESS.md）                     
+      31 +make progress PROJECT=hermes                                   
+      32 +                                                               
+      33 +# 验证某阶段产出清单                                           
+      34 +make check-stage PROJECT=hermes STAGE=03-module-design         
+      35 +                                                               
+      36 +# 推进到下一阶段（check 必须 PASS）                            
+      37 +make advance PROJECT=hermes                                    
+      38 +                                                               
+      39 +# 检查 schema 覆盖率                                           
+      40 +make schema-coverage PROJECT=hermes                            
+      41 +                                                               
+      42 +# 锁定/解锁测试目录                                            
+      43 +make lock-tests PROJECT=hermes                                 
+      44 +make unlock-tests PROJECT=hermes REASON="接口变更原因"         
+      45 +                                                               
+      46 +# 安装 git hooks（首次使用）                                   
+      47 +make install-hooks                                             
+      48 +```                                                            
+      49 +                                                               
+      50 +## 硬约束机制                                                  
+      51 +                                                               
+      52 +- **测试文件锁定**：三层保护（Claude Code deny 规则 + git pre-c
+         +ommit hook + chmod 444）                                       
+      53 +- **阶段门禁**：`deliverables.yaml` 定义产出，`check_stage.py` 
+         +机器验证，不通过不能推进                                       
+      54 +- **进度自动化**：`update_progress.py` 扫描事实自动重写 `PROGRE
+         +SS.md`，人工无需维护                                           
+      55 +                                                               
+      56  ## 使用规则
+      57  
+      58  1. 进入项目时，读取该项目的 `CLAUDE.md`
+      59  2. `CLAUDE.md` 指定的文档之外，**不主动读取**其他阶段文档
+      60  3. 所有编码遵循 `standards/` 下的规范
+      28 -4. 进度更新写入 `PROGRESS.md`，不修改 `CLAUDE.md` 中的内容（CLA
+         -UDE.md 只改引用路径）                                          
+      61 +4. 阶段推进用 `make advance`，不手动修改 `PROGRESS.md`（会被脚 
+         +本覆盖）                                                       
+
+● Update(hermes/CLAUDE.md)
+  ⎿  Added 1 line, removed 1 line
+      1  # Project: Hermes · AI 金融量化投资平台
+      2  
+      3 -> 当前进度见 [PROGRESS.md](PROGRESS.md)                         
+      3 +> 当前进度见 [PROGRESS.md](PROGRESS.md)（由 `make progress PROJE
+        +CT=hermes` 自动生成）                                           
+      4  
+      5  ## 必读（全局规范）
+      6  
+
+● Update(hermes/CLAUDE.md)
+  ⎿  Added 11 lines, removed 4 lines
+      38  - **不使用 Mock 数据**：A 股接口字段差异大，Mock 掩盖真实问题
+      39  - 5个验证检查点（CP），按顺序推进，CP 未通过不进入下一个
+      40  
+      41 -## ⛔ 禁止事项                                                 
+      41 +## ⛔ 禁止事项（机械保障）                                     
+      42  
+      43 -- 不得主动读取非当前阶段的文档（参考时手动读取，不自动加载）   
+      44 -- 阶段 04 后：`stages/04-development/tests/` 下所有文件为只读契
+         -约，禁止修改                                                   
+      45 -- 不得跳过阶段直接进入实现                                     
+      43 +以下约束**不是口头要求，而是脚本/hooks/权限强制执行的**：      
+      44  
+      45 +- **禁读非当前阶段文档**：CLAUDE.md 只引用当前阶段，其他阶段需 
+         +手动主动读取                                                   
+      46 +- **禁改锁定测试**：`stages/04-development/tests/` 进入阶段 04 
+         +后自动锁定：                                                   
+      47 +  - Claude Code 的 Edit/Write 工具被 `.claude/settings.local.js
+         +on` 的 deny 规则拒绝                                           
+      48 +  - Git 的 pre-commit hook 拒绝 commit                         
+      49 +  - 文件权限 `chmod 444` 让任何进程写入得到 EACCES             
+      50 +  - 解锁必须走 `make unlock-tests REASON="..."`，留审计记录    
+      51 +- **禁跳过阶段**：`make advance` 要求当前阶段 `check_stage.py` 
+         +全部 PASS 才允许推进                                           
+      52 +- **禁手动改 PROGRESS.md**：`pre-commit` hook 会用 `update_prog
+         +ress.py` 自动重写                                              
+      53 +                                                               
+      54  ## 其他阶段文档（勿主动读取，存档备查）
+      55  
+      56  - `stages/01-requirements/requirements.md` ✅ 完成
+
+● Update(consilium/CLAUDE.md)
+  ⎿  Added 1 line, removed 1 line
+      1  # Project: Consilium · 智囊团共识平台
+      2  
+      3 -> 当前进度见 [PROGRESS.md](PROGRESS.md)                         
+      3 +> 当前进度见 [PROGRESS.md](PROGRESS.md)（由 `make progress PROJE
+        +CT=consilium` 自动生成）                                        
+      4  
+      5  ## 必读（全局规范）
+      6  
+
+● Update(consilium/CLAUDE.md)
+  ⎿  Added 5 lines, removed 3 lines
+      22  - **阶段 04 开发**：严格 TDD，先写测试再写实现，测试文件写入后
+          禁止修改
+      23  - 5个验证检查点（CP），按顺序推进，CP 未通过不进入下一个
+      24  
+      25 -## ⛔ 禁止事项                                                 
+      25 +## ⛔ 禁止事项（机械保障）                                     
+      26  
+      27 -- 不得主动读取非当前阶段的文档（参考时手动读取，不自动加载）   
+      28 -- 阶段 04 后：`stages/04-development/tests/` 下所有文件为只读契
+         -约，禁止修改                                                   
+      27 +- **禁读非当前阶段文档**：CLAUDE.md 只引用当前阶段             
+      28 +- **禁改锁定测试**：三层保护（Claude Code deny + git hook + chm
+         +od 444），解锁需 `make unlock-tests REASON="..."`              
+      29 +- **禁跳过阶段**：`make advance` 要求当前阶段 check 全部 PASS  
+      30 +- **禁手动改 PROGRESS.md**：pre-commit hook 自动重写           
+      31  
+      32  ## 其他阶段文档（勿主动读取，存档备查）
+      33  
+  ⎿  You've hit your limit · resets 8pm (Asia/Shanghai)
+     /upgrade to increase your usage limit.
+
+✻ Worked for 13m 22s
+
+❯ 先把已完成阶段的文件写到磁盘                                                  
+  ⎿  You've hit your limit · resets 8pm (Asia/Shanghai)
+     /upgrade to increase your usage limit.

@@ -1,0 +1,15 @@
+stage: 01-requirements
+name: Requirements（需求分析）
+
+deliverables:
+  - id: design-doc
+    type: file
+    path: design-doc.md
+    required: true
+    min_size_bytes: 1000
+
+  - id: prd
+    type: file
+    path: prd.md
+    required: true
+    min_size_bytes: 1000

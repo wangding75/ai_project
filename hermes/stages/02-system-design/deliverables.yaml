@@ -1,0 +1,9 @@
+stage: 02-system-design
+name: System Design（系统设计）
+
+deliverables:
+  - id: system-design-doc
+    type: file
+    path: system-design.md
+    required: true
+    min_size_bytes: 2000

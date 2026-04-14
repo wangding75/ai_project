@@ -1,0 +1,15 @@
+stage: 06-deployment
+name: Deployment（上线部署）
+
+deliverables:
+  - id: deployment-plan
+    type: file
+    path: deployment-plan.md
+    required: true
+    min_size_bytes: 500
+
+  - id: infrastructure-doc
+    type: file
+    path: infrastructure.md
+    required: true
+    min_size_bytes: 300

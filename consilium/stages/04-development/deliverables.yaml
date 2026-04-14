@@ -1,0 +1,23 @@
+stage: 04-development
+name: Development（TDD 开发）
+
+deliverables:
+  - id: workflow-doc
+    type: file
+    path: WORKFLOW.md
+    required: true
+
+  - id: test-files
+    type: dir
+    path: tests
+    required: true
+    pattern: "test_*.py"
+    min_files: 1
+
+  - id: non-functional-tests
+    type: files
+    path: tests
+    patterns:
+      - "test_*_logging.py"
+      - "test_*_metrics.py"
+      - "test_*_fallback.py"

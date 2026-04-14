@@ -1,0 +1,9 @@
+stage: 05-testing
+name: Testing（测试验证）
+
+deliverables:
+  - id: test-plan
+    type: file
+    path: test-plan.md
+    required: true
+    min_size_bytes: 500
