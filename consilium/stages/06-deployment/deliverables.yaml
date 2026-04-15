@@ -6,10 +6,14 @@ deliverables:
     type: file
     path: deployment-plan.md
     required: true
-    min_size_bytes: 500
+    min_size_bytes: 1000
+    must_contain:
+      - "回滚"
 
   - id: infrastructure-doc
     type: file
     path: infrastructure.md
     required: true
-    min_size_bytes: 300
+    min_size_bytes: 500
+    must_contain:
+      - "Docker"

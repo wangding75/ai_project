@@ -44,13 +44,14 @@ fi
 # ---- Check 2: Auto-update PROGRESS.md ----
 # Only run if deliverables/schemas/tests files changed, to avoid slowing every commit
 if git diff --cached --name-only | grep -qE "(deliverables\.yaml|schemas/|tests/|stages/.*\.md)"; then
-  for project in hermes consilium; do
-    if [ -d "$REPO_ROOT/$project/stages" ]; then
-      python3 "$REPO_ROOT/scripts/update_progress.py" "$project" > /dev/null 2>&1 || true
-      # Stage the updated PROGRESS.md so it's part of this commit
-      if [ -f "$REPO_ROOT/$project/PROGRESS.md" ]; then
-        git add "$REPO_ROOT/$project/PROGRESS.md"
-      fi
+  # Auto-discover projects: directories containing a stages/ subdirectory
+  for project_dir in "$REPO_ROOT"/*/stages; do
+    [ -d "$project_dir" ] || continue
+    project="$(basename "$(dirname "$project_dir")")"
+    python3 "$REPO_ROOT/scripts/update_progress.py" "$project" > /dev/null 2>&1 || true
+    # Stage the updated PROGRESS.md so it's part of this commit
+    if [ -f "$REPO_ROOT/$project/PROGRESS.md" ]; then
+      git add "$REPO_ROOT/$project/PROGRESS.md"
     fi
   done
 fi

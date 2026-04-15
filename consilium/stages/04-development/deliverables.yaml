@@ -7,6 +7,11 @@ deliverables:
     path: WORKFLOW.md
     required: true
 
+  - id: status-tracker
+    type: file
+    path: STATUS.yaml
+    required: true
+
   - id: test-files
     type: dir
     path: tests
@@ -21,3 +26,10 @@ deliverables:
       - "test_*_logging.py"
       - "test_*_metrics.py"
       - "test_*_fallback.py"
+      - "test_*_perf.py"
+
+  - id: tests-pass
+    type: command
+    cmd: "python3 -c \"import glob,sys,subprocess; fs=glob.glob('tests/test_*.py'); sys.exit(0) if not fs else sys.exit(subprocess.run(['pytest','tests/','-q','--no-header','--tb=short']).returncode)\""
+    expect_exit_code: 0
+    cwd_stage: true

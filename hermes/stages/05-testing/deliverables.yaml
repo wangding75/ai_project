@@ -6,4 +6,13 @@ deliverables:
     type: file
     path: test-plan.md
     required: true
-    min_size_bytes: 500
+    min_size_bytes: 1000
+    must_contain:
+      - "测试范围"
+      - "通过标准"
+
+  - id: coverage-report
+    type: command
+    cmd: "python3 -c \"import glob,sys,subprocess; fs=glob.glob('tests/test_*.py'); sys.exit(0) if not fs else sys.exit(subprocess.run(['pytest','tests/','--tb=no','-q','--no-header']).returncode)\""
+    expect_exit_code: 0
+    cwd_stage: false

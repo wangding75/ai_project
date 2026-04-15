@@ -1,4 +1,4 @@
-.PHONY: help progress check-stage advance schema-coverage lock-tests unlock-tests install-hooks
+.PHONY: help progress check-stage advance advance-dry-run schema-coverage lock-tests unlock-tests install-hooks
 
 PROJECT ?= hermes
 STAGE ?= 01-requirements
@@ -31,6 +31,9 @@ check-stage:
 advance:
 	$(PY) scripts/advance_stage.py $(PROJECT)
 
+advance-dry-run:
+	$(PY) scripts/advance_stage.py $(PROJECT) --dry-run
+
 schema-coverage:
 	$(PY) scripts/check_schema_coverage.py $(PROJECT)
 
@@ -47,7 +50,7 @@ install-hooks:
 	@echo "✅ Git hooks installed (core.hooksPath=.githooks)"
 
 check-all:
-	@for p in hermes consilium; do \
+	@for p in $$(ls -d */stages 2>/dev/null | sed 's|/stages||'); do \
 		for s in 01-requirements 02-system-design 03-module-design 04-development 05-testing 06-deployment 07-operations; do \
 			$(PY) scripts/check_stage.py $$p $$s || true; \
 		done; \

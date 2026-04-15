@@ -39,9 +39,21 @@ LOCK_DIR="$REPO_ROOT/.git/locks"
 AUDIT_FILE="$LOCK_DIR/unlock-audit.log"
 mkdir -p "$LOCK_DIR"
 
-# 解锁
-find "$TESTS_DIR" -type f -exec chmod 644 {} \;
-find "$TESTS_DIR" -type d -exec chmod 755 {} \;
+# 检测操作系统，使用对应的解锁方式
+case "$(uname -s)" in
+  MINGW*|MSYS*|CYGWIN*|Windows_NT)
+    # Windows: 使用 attrib 移除只读属性
+    find "$TESTS_DIR" -type f -exec attrib -R {} \; 2>/dev/null || \
+    find "$TESTS_DIR" -type f | while read -r f; do
+      attrib -R "$(cygpath -w "$f" 2>/dev/null || echo "$f")" 2>/dev/null || true
+    done
+    ;;
+  *)
+    # Unix: 使用 chmod
+    find "$TESTS_DIR" -type f -exec chmod 644 {} \;
+    find "$TESTS_DIR" -type d -exec chmod 755 {} \;
+    ;;
+esac
 
 # 删除锁标记
 LOCK_ID=$(echo "$TESTS_DIR" | tr '/' '-')

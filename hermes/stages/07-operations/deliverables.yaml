@@ -6,10 +6,14 @@ deliverables:
     type: file
     path: runbook.md
     required: true
-    min_size_bytes: 300
+    min_size_bytes: 500
+    must_contain:
+      - "故障处理"
 
   - id: monitoring-doc
     type: file
     path: monitoring.md
     required: true
-    min_size_bytes: 300
+    min_size_bytes: 500
+    must_contain:
+      - "告警"

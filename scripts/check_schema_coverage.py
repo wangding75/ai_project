@@ -78,16 +78,19 @@ def check_coverage(project: str) -> int:
     schemas = extract_schemas(schemas_dir)
     test_content = extract_test_references(tests_dir)
 
+    # Use word-boundary matching to avoid false positives with short names
+    # (e.g., "Date" matching inside "update" or "Status" inside "StatusCode")
     missing_models = []
     for model in sorted(schemas["models"]):
-        if model not in test_content:
+        pattern = re.compile(r"\b" + re.escape(model) + r"\b")
+        if not pattern.search(test_content):
             missing_models.append(model)
 
     missing_errors = []
     for class_name, consts in schemas["errors"].items():
         for const in consts:
-            # Look for either the const name or its common string pattern
-            if const not in test_content:
+            pattern = re.compile(r"\b" + re.escape(const) + r"\b")
+            if not pattern.search(test_content):
                 missing_errors.append(f"{class_name}.{const}")
 
     total_models = len(schemas["models"])

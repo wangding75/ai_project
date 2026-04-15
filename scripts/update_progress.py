@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import sys
 import re
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
@@ -147,7 +148,18 @@ def update_progress(project: str) -> int:
     preserved = extract_changelog(existing)
 
     content = build_progress_content(project, reports, preserved)
-    progress_file.write_text(content, encoding="utf-8")
+
+    # Atomic write: write to temp file first, then rename
+    tmp_fd, tmp_path = tempfile.mkstemp(
+        dir=str(progress_file.parent), suffix=".tmp", prefix=".progress_"
+    )
+    try:
+        with open(tmp_fd, "w", encoding="utf-8") as f:
+            f.write(content)
+        Path(tmp_path).replace(progress_file)
+    except Exception:
+        Path(tmp_path).unlink(missing_ok=True)
+        raise
 
     print(f"✅ Updated {progress_file.relative_to(REPO_ROOT)}")
     for stage_id, report in reports:

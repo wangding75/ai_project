@@ -24,10 +24,12 @@ deliverables:
     type: file
     path: api-spec.md
     required: true
+    min_size_bytes: 2000
     must_contain:
       - "SLO 契约"
       - "可观测性契约"
       - "降级契约"
+      - "安全契约"
 
   - id: schemas-importable
     type: command
